@@ -1,7 +1,7 @@
-# BrixtonLocal
+# Brixton Local
 An app to support local businesses during the COVID-19 crisis using React, Node and Google Sheets API
 
-BrixtonLocal is a website that brings together all the businesses still operating during the lockdown and providing additional services such as delivery, restaurants/cafes now selling fruit+veg or people moving their businesses online such as fitness classes.
+Brixton Local is a website that brings together all the businesses still operating during the lockdown and providing additional services such as delivery, restaurants/cafes now selling fruit+veg or people moving their businesses online such as fitness classes.
 
 It started life as a crowd sourced Google spreadsheet and this is where all the entry information is stored.  The website is currently live at https://www.brixtonlocal.life/ using Hugo.  (The repo is here https://github.com/Johanna-hub/local-brixton).
 
