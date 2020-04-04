@@ -1,5 +1,5 @@
 # Brixton Local
-An app to support local businesses during the COVID-19 crisis using React, Node and Google Sheets API
+A web app to support local businesses during the COVID-19 crisis using React, Node and Google Sheets API
 
 Brixton Local is a website that brings together all the businesses still operating during the lockdown and providing additional services such as delivery, restaurants/cafes now selling fruit+veg or people moving their businesses online such as fitness classes.
 
@@ -18,5 +18,3 @@ As a user I need to:
 - Easily get to the About page
 
 It would be good to have the landing page have a random order of entries every time a user opens it because from analytics some people are just clicking on things that start with A & B because it's currently presented alphabetically!
-
-
