@@ -8,7 +8,7 @@
     "start:local": "concurrently \"npm run server:watch\" \"npm run client\"",
     "server:watch": "NODE_ENV=dev nodemon ./server/server.js",
     "client": "cd client && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./server/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.2"
+    "jest": "^25.2.7",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

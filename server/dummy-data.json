@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Jamie's Bakery",
+    "address": "123 Fake Street",
+    "howToOrder": "Online",
+    "website": "https://jamies-bakery.com/",
+    "openingHours": "Online between 8am - 8pm online for next day delivery at the latest",
+    "notes": "Still delivering fresh made bread and delicious treats every day",
+    "socialMedia": "@jamiesbakery",
+    "tags": [
+      "bread", "delivery"
+    ],
+    "imgUrl": "https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg"
+  },
+  {
+    "name": "Becky's Pizza",
+    "address": "123 Fake Street",
+    "howToOrder": "Deliveroo",
+    "website": "https://beckys-pizza.com/",
+    "openingHours": "Delivery is available Monday to Friday from 6:30pm – 10:30pm and 4pm – 10:30pm Saturday and Sunday",
+    "notes": "Amazing sourdough pizzas!!",
+    "socialMedia": "www.facebook.com/beckyspizza",
+    "tags": [
+      "pizza", "delivery"
+    ],
+    "imgUrl": "hhttps://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/auto_1500_width/public/restaurant-images/134150/slideshow-1562922041.jpg"
+  }
+]
