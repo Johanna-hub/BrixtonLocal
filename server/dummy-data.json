@@ -5,11 +5,13 @@
     "howToOrder": "Online",
     "website": "https://jamies-bakery.com/",
     "openingHours": "Online between 8am - 8pm online for next day delivery at the latest",
-    "notes": "Still delivering fresh made bread and delicious treats every day",
+    "generalDescription": "Jamie's is your neighbourhood bakery specialising in sourghdough and cakes",
+    "covidService": "We are still delivering fresh made bread and delicious treats every day",
     "socialMedia": "@jamiesbakery",
     "tags": [
       "bread", "delivery"
     ],
+    "category": ["food"],
     "imgUrl": "https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg"
   },
   {
@@ -18,11 +20,13 @@
     "howToOrder": "Deliveroo",
     "website": "https://beckys-pizza.com/",
     "openingHours": "Delivery is available Monday to Friday from 6:30pm – 10:30pm and 4pm – 10:30pm Saturday and Sunday",
-    "notes": "Amazing sourdough pizzas!!",
+    "generalDescription": "Amazing sourdough pizzas, made in our authentic pizza oven",
+    "covidService": "You can still order online through Deliveroo",
     "socialMedia": "www.facebook.com/beckyspizza",
     "tags": [
       "pizza", "delivery"
     ],
-    "imgUrl": "hhttps://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/auto_1500_width/public/restaurant-images/134150/slideshow-1562922041.jpg"
+    "category": ["food"],
+    "imgUrl": "https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/auto_1500_width/public/restaurant-images/134150/slideshow-1562922041.jpg"
   }
 ]
