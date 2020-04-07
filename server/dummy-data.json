@@ -11,8 +11,7 @@
     "tags": [
       "bread", "cakes", "bakery"
     ],
-    "categoryOne": ["Groceries"],
-    "categoryTwo":[],
+    "categories": ["Groceries"],
     "delivery": false,
     "collection": true,
     "imgUrl": "https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg"
@@ -29,8 +28,7 @@
     "tags": [
       "pizza", "wine", "beer"
     ],
-    "categoryOne": ["Takeaway"],
-    "categoryTwo":[],
+    "categories": ["Takeaway"],
     "delivery": true,
     "collection": true,
     "imgUrl": "https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/auto_1500_width/public/restaurant-images/134150/slideshow-1562922041.jpg"
