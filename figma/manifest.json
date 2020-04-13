@@ -1,0 +1,7 @@
+{
+  "name": "Brixton Local Components",
+  "id": "015215708758837560",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
