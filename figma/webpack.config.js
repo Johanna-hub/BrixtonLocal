@@ -21,7 +21,7 @@ module.exports = configure({
       '#components': path.resolve(__dirname, '../components'),
       react: path.resolve(__dirname, './node_modules/react/'),
       'react-figma': path.resolve(__dirname, './node_modules/react-figma/'),
-      'styled-components': path.resolve(__dirname, './src/styled'),
+      'styled-components': path.resolve(__dirname, '../components/styled'),
       'styled-system': path.resolve(__dirname, './node_modules/styled-system'),
     },
   },

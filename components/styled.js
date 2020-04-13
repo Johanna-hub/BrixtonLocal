@@ -1,14 +1,11 @@
-/* eslint-disable import/first */
-/* eslint-disable import/no-mutable-exports */
-/* eslint-disable prettier/prettier */
 import { Platform } from 'react-primitives';
-
-let styled, ThemeProvider, css;
-
 // FIXME: This is an unmaintained fork! Used for `shouldForwardProp` in native platforms (there's an open PR)
 // Once the issue is merged/resolved, this should be changed back to `styled-components`
 import styledW, { css as cssW, ThemeProvider as ThemeProviderW } from '@elemental-design/styled-components';
 import styledP, { css as cssP, ThemeProvider as ThemeProviderP } from '@elemental-design/styled-components/primitives';
+
+let styled, ThemeProvider, css;
+
 
 if (Platform.OS === 'figma') {
   styled = styledP;
@@ -33,6 +30,7 @@ if (Platform.OS === 'figma') {
 
   styled.View = styled.div;
   styled.Text = styled.span;
+  styled.Image = styled.img.attrs(({ source }) => ({ src: source }));
 }
 
 export { ThemeProvider, css };

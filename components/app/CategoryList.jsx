@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Platform } from 'react-primitives';
 
 import { isLast } from '../utils';
 
@@ -27,17 +28,26 @@ const CategoryNumber = styled(Text)`
   text-align: center;
 
   color: #FFFFFF;
+  z-index: 5; /* Not sure why this is needed? ... Here come exponentially increasing z-index overrides... */
 `;
 
 const CategoryImage = ({ source, count, ...props }) => (
-  <Box width="100%" justifyContent="center" alignItems="center" {...props}>
+  <Box
+    justifyContent="center"
+    alignItems="center"
+    position="relative"
+    {...(Platform.OS === 'figma' ? { width: '100%' } : { flex: 1} )}
+    {...props}
+  >
     <FillBox />
     <FillImage source={source} />
-    {count && (
-      <CategoryNumber>
-        {count}
-      </CategoryNumber>
-    )}
+    <Box justifyContent="center" flex={1}>
+      {count && (
+        <CategoryNumber>
+          {count}
+        </CategoryNumber>
+      )}
+    </Box>
   </Box>
 );
 CategoryImage.defaultProps = {
@@ -67,8 +77,8 @@ const CategoryList = ({ title, items, ...props }) => (
     <CategoriesHeading mb={3}>
       {title}
     </CategoriesHeading>
-    <Row flexWrap="wrap">
-      {items.map((item, i) => (
+    <Row overflow="scroll">
+      {(items || []).map((item, i) => (
         <CategoryTile mr={!isLast(i, items.length) ? 2 : 0} item={item} />
       ))}
     </Row>

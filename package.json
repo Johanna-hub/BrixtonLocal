@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "",
   "dependencies": {
+    "@elemental-design/styled-components": "^5.1.0",
     "axios": "^0.19.2",
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.1",
@@ -16,7 +17,11 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-native-web": "^0.12.2",
+    "react-primitives": "^0.8.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
@@ -25,7 +30,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

@@ -3,6 +3,27 @@ const path = require("path")
 const _ = require("lodash")
 require("dotenv").config()
 
+exports.onCreateWebpackConfig = ({
+  // stage,
+  getConfig,
+  // rules,
+  // loaders,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        ...getConfig().resolve.alias,
+        '#components': path.resolve(__dirname, './components'),
+        react: path.resolve(__dirname, './node_modules/react/'),
+        'styled-components': path.resolve(__dirname, './components/styled'),
+        'styled-system': path.resolve(__dirname, './node_modules/styled-system'),
+      },
+      extensions: getConfig().resolve.extensions.concat('.web.js'),
+    },
+  });
+};
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -36,6 +57,13 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+
+    // categories.forEach(edge => {
+    //   createPage({
+    //     path: `category/${categoryName}`,
+    //     component: path.resolve(`src/templates`)
+    //   })
+    // })
   })
 }
 

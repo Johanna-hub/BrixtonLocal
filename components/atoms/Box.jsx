@@ -9,6 +9,7 @@ const Box = styled(View)`
 
 Box.defaultProps = {
   display: 'flex',
+  flexDirection: 'column',
 }
 
 export default Box;
