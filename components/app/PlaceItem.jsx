@@ -7,9 +7,8 @@ import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
 
 
-
 const PlaceImage = ({ source, ...props }) => (
-  <Image source={source} {...props} />
+  <Image source={"http://drive.google.com/uc?export=view&id=" + source.split("=")[1]} {...props} />
 );
 
 const CategoryName = styled(Text)`

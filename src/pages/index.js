@@ -31,11 +31,12 @@ const extractItemData = ({
     Tags,
     Collection,
     Delivery,
+    Image_Url,
   } = {},
 }) => ({
   name: Name,
   category: Category_1,
-  source: 'https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg',
+  source: Image_Url,
   tags: normaliseTag(Tags) || ['Fruit & Veg', 'Bread'],
   collection: Collection,
   delivery: Delivery, 
@@ -69,6 +70,7 @@ export const query = graphql`
           Tags
           Collection
           Delivery
+          Image_Url
         }
       }
     }
