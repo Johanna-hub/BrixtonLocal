@@ -5,6 +5,8 @@ import { isLast } from '../utils';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
+import { Link } from "gatsby";
+import _ from "lodash";
 
 
 const PlaceImage = ({ source, ...props }) => (
@@ -68,7 +70,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-      {name}
+    <Link to={`/${_.kebabCase(name)}`}>{name}</Link>
     </PlaceName>
     <TagText> {tags && (
       <Row flexWrap="wrap">
