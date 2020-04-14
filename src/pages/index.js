@@ -29,12 +29,16 @@ const extractItemData = ({
     Name = '',
     Category_1 = '',
     Tags,
+    Collection,
+    Delivery,
   } = {},
 }) => ({
   name: Name,
   category: Category_1,
   source: 'https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg',
   tags: normaliseTag(Tags) || ['Fruit & Veg', 'Bread'],
+  collection: Collection,
+  delivery: Delivery, 
 })
 
 const IndexPage = ({ data }) => {
@@ -63,6 +67,8 @@ export const query = graphql`
           Category_1
           Category_2__only_if_relevant_
           Tags
+          Collection
+          Delivery
         }
       }
     }

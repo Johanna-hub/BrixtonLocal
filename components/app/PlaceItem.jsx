@@ -57,14 +57,15 @@ const Tag = ({ type, ...props }) => (
   </Box>
 )
 
-const PlaceInfo = ({ name, category, tags }) => (
+const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
       <CategoryName>
         {(category || '').toUpperCase()}
       </CategoryName>
       <CollectionMethod>
-        {(category || '').toUpperCase()}
+        {(delivery === "TRUE" ? "Delivery" : '')}
+        {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
@@ -85,10 +86,10 @@ const PlaceItemContainer = ({ children, ...props }) => (
     {children}
   </Box>
 );
-const PlaceItem = ({ children, place: { name, category, source, tags }, ...props }) => (
+const PlaceItem = ({ children, place: { name, category, source, tags, collection, delivery }, ...props }) => (
   <PlaceItemContainer {...props}>
     <PlaceImage flex={1} source={source} />
-    <PlaceInfo name={name} category={category} tags={tags} />
+    <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
   </PlaceItemContainer>
 );
 
