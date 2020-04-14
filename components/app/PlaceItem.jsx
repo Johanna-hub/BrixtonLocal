@@ -70,7 +70,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-    <Link to={`/${_.kebabCase(name)}`}>{name}</Link>
+    <Link to={`/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
     </PlaceName>
     <TagText> {tags && (
       <Row flexWrap="wrap">
@@ -90,9 +90,11 @@ const PlaceItemContainer = ({ children, ...props }) => (
 );
 const PlaceItem = ({ children, place: { name, category, source, tags, collection, delivery }, ...props }) => (
   <PlaceItemContainer {...props}>
+  <Link to={`/${_.kebabCase(name)}`}>
     <PlaceImage flex={1} source={source} />
+    </Link>
     <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
-  </PlaceItemContainer>
+  </PlaceItemContainer> 
 );
 
 PlaceItem.defaultProps = {
