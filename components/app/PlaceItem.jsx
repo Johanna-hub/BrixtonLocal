@@ -5,9 +5,9 @@ import { isLast } from '../utils';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
-import { Link } from "gatsby";
 import _ from "lodash";
 
+import Link from './Link';
 
 const PlaceImage = ({ source, ...props }) => (
   <Image source={source} {...props} />
