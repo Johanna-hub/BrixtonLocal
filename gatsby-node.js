@@ -48,11 +48,15 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const businessNames = result.data.allGoogleSheetValue.edges
+    const businessNames = result.data.allGoogleSheetValue.edges  
+    
+    if (anyDuplicateBusinessNames(businessNames)) {
+      throw new Error('One or more businesses have duplicate names, please correct in spreadsheet')      
+    }
 
     businessNames.forEach(edge => {
       const { Name } = edge.node
-      const businessPath = `/${_.kebabCase(Name)}/`
+      const businessPath = `/business/${_.kebabCase(Name)}/`
 
       createPage({
         path: businessPath,
@@ -141,3 +145,6 @@ const fetchGoogleSheetsData = () =>
   axios.get(
     `https://sheets.googleapis.com/v4/spreadsheets/${process.env.GOOGLE_SHEET_ID}/values:batchGet?ranges=B3:Q&majorDimension=ROWS&key=${process.env.GOOGLE_API_KEY}`
   )
+
+const anyDuplicateBusinessNames = businessNames => 
+  new Set(businessNames.map(edge => edge.node.Name)).size !== businessNames.length

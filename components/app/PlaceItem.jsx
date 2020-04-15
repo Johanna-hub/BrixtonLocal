@@ -70,7 +70,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-    <Link to={`/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
+    <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
     </PlaceName>
     {tags && (
       <Row flexWrap="wrap">
