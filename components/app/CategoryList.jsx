@@ -79,7 +79,7 @@ const CategoryList = ({ title, items, ...props }) => (
     </CategoriesHeading>
     <Row overflow="scroll">
       {(items || []).map((item, i) => (
-        <CategoryTile mr={!isLast(i, items.length) ? 2 : 0} item={item} />
+        <CategoryTile key={(item && item.name) || i} mr={!isLast(i, items.length) ? 2 : 0} item={item} />
       ))}
     </Row>
   </Box>

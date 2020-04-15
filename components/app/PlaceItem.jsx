@@ -5,8 +5,9 @@ import { isLast } from '../utils';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
+import _ from "lodash";
 
-
+import Link from './Link';
 
 const PlaceImage = ({ source, ...props }) => (
   <Image source={source} {...props} />
@@ -57,22 +58,23 @@ const Tag = ({ type, ...props }) => (
   </Box>
 )
 
-const PlaceInfo = ({ name, category, tags }) => (
+const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
       <CategoryName>
         {(category || '').toUpperCase()}
       </CategoryName>
       <CollectionMethod>
-        {(category || '').toUpperCase()}
+        {(delivery === "TRUE" ? "Delivery" : '')}
+        {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-      {name}
+    <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
     </PlaceName>
     {tags && (
       <Row flexWrap="wrap">
-        {tags.map((tag, i) => (
+        {(tags || []).map((tag, i) => (
           <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
         ))}
       </Row>
@@ -85,12 +87,30 @@ const PlaceItemContainer = ({ children, ...props }) => (
     {children}
   </Box>
 );
-const PlaceItem = ({ children, place: { name, category, source, tags }, ...props }) => (
-  <PlaceItemContainer {...props}>
-    <PlaceImage flex={1} source={source} />
-    <PlaceInfo name={name} category={category} tags={tags} />
-  </PlaceItemContainer>
-);
+
+const parseImageSource = (url) => {
+  const isDriveUrl = url.includes('drive.google.com');
+
+  if (isDriveUrl) {
+    return `http://drive.google.com/uc?export=view&id=${url.split('=')[1]}`
+  }
+
+
+  return url;
+};
+
+const PlaceItem = ({ children, place: { name, category, source: _source, tags, collection, delivery }, ...props }) => {
+  const source = parseImageSource(_source);
+
+  return (
+    <PlaceItemContainer {...props}>
+      <Link to={`/business/${_.kebabCase(name)}`}>
+        <PlaceImage flex={1} source={source} />
+      </Link>
+      <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
+    </PlaceItemContainer> 
+  );
+}
 
 PlaceItem.defaultProps = {
   place: {

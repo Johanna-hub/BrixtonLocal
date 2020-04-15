@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
-import Card from "../components/Card"
 import Box from '#components/atoms/Box';
 import { PlaceList, CategoryList } from '#components/app';
 
@@ -22,19 +21,35 @@ const categories = [{
 }]
 
 // e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
-const normaliseTag = tag => tag;
+
+// returns ['tag-name', 'tag-name-1', 'bread', ...]
+const normaliseTags = (tags) => {
+  if (Array.isArray(tags)) {
+    return tags;
+  }
+  if (typeof tags === 'string') {
+    return tags.split(",");
+  }
+
+  return [];
+}
 
 const extractItemData = ({
   node: {
     Name = '',
     Category_1 = '',
     Tags,
+    Collection,
+    Delivery,
+    Image_Url,
   } = {},
 }) => ({
   name: Name,
   category: Category_1,
-  source: 'https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg',
-  tags: normaliseTag(Tags) || ['Fruit & Veg', 'Bread'],
+  source: Image_Url,
+  tags: normaliseTags(Tags),
+  collection: Collection,
+  delivery: Delivery, 
 })
 
 const IndexPage = ({ data }) => {
@@ -63,6 +78,9 @@ export const query = graphql`
           Category_1
           Category_2__only_if_relevant_
           Tags
+          Collection
+          Delivery
+          Image_Url
         }
       }
     }
