@@ -22,7 +22,18 @@ const categories = [{
 }]
 
 // e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
-// const normaliseTag = tag => tag;
+
+// returns ['tag-name', 'tag-name-1', 'bread', ...]
+const normaliseTags = (tags) => {
+  if (Array.isArray(tags)) {
+    return tags;
+  }
+  if (typeof tags === 'string') {
+    return Tags.split(",");
+  }
+
+  return [];
+}
 
 const extractItemData = ({
   node: {
@@ -37,7 +48,7 @@ const extractItemData = ({
   name: Name,
   category: Category_1,
   source: Image_Url,
-  tags: Tags.split(","),
+  tags: normaliseTags(Tags),
   collection: Collection,
   delivery: Delivery, 
 })
