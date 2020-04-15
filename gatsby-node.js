@@ -3,6 +3,11 @@ const path = require("path")
 const _ = require("lodash")
 require("dotenv").config()
 
+// Resolve .web.js before .js – for universal/cross-platform rendering
+const resolvableExtensions = () => ['.web.js', '.web.jsx', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx'];
+
+exports.resolvableExtensions = resolvableExtensions;
+
 exports.onCreateWebpackConfig = ({
   // stage,
   getConfig,
@@ -19,7 +24,7 @@ exports.onCreateWebpackConfig = ({
         'styled-components': path.resolve(__dirname, './components/styled'),
         'styled-system': path.resolve(__dirname, './node_modules/styled-system'),
       },
-      extensions: getConfig().resolve.extensions.concat('.web.js'),
+      extensions: [...resolvableExtensions(), ...getConfig().resolve.extensions],
     },
   });
 };

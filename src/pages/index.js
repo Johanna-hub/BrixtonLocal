@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
-import Card from "../components/Card"
 import Box from '#components/atoms/Box';
 import { PlaceList, CategoryList } from '#components/app';
 
@@ -29,7 +28,7 @@ const normaliseTags = (tags) => {
     return tags;
   }
   if (typeof tags === 'string') {
-    return Tags.split(",");
+    return tags.split(",");
   }
 
   return [];

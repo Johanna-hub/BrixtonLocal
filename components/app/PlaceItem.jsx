@@ -72,14 +72,13 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
     <PlaceName mb={2}>
     <Link to={`/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
     </PlaceName>
-    <TagText> {tags && (
+    {tags && (
       <Row flexWrap="wrap">
-        {tags.map((tag, i) => (
+        {(tags || []).map((tag, i) => (
           <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
         ))}
-        </Row>
-        )}
-        </TagText>
+      </Row>
+    )}
   </Box>
 );
 
