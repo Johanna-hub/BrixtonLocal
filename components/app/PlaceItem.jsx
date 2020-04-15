@@ -104,8 +104,8 @@ const PlaceItem = ({ children, place: { name, category, source: _source, tags, c
 
   return (
     <PlaceItemContainer {...props}>
-    <Link to={`/${_.kebabCase(name)}`}>
-      <PlaceImage flex={1} source={source} />
+      <Link to={`/business/${_.kebabCase(name)}`}>
+        <PlaceImage flex={1} source={source} />
       </Link>
       <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
     </PlaceItemContainer> 
