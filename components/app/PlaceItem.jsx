@@ -89,10 +89,10 @@ const PlaceItemContainer = ({ children, ...props }) => (
 );
 
 const parseImageSource = (url) => {
-  const isDriveUrl = true; // FIXME: This should be something like url.startsWith('drive:'), but need to decide on a system to use in the spreadsheets first.
+  const isDriveUrl = url.includes('drive.google.com');
 
   if (isDriveUrl) {
-    return url.replace('drive:', '');
+    return `http://drive.google.com/uc?export=view&id=${url.split('=')[1]}`
   }
 
 
