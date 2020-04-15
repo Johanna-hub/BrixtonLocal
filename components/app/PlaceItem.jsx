@@ -10,7 +10,7 @@ import _ from "lodash";
 
 
 const PlaceImage = ({ source, ...props }) => (
-  <Image source={"http://drive.google.com/uc?export=view&id=" + source.split("=")[1]} {...props} />
+  <Image source={source} {...props} />
 );
 
 const CategoryName = styled(Text)`
@@ -88,14 +88,30 @@ const PlaceItemContainer = ({ children, ...props }) => (
     {children}
   </Box>
 );
-const PlaceItem = ({ children, place: { name, category, source, tags, collection, delivery }, ...props }) => (
-  <PlaceItemContainer {...props}>
-  <Link to={`/${_.kebabCase(name)}`}>
-    <PlaceImage flex={1} source={source} />
-    </Link>
-    <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
-  </PlaceItemContainer> 
-);
+
+const parseImageSource = (url) => {
+  const isDriveUrl = true; // FIXME: This should be something like url.startsWith('drive:'), but need to decide on a system to use in the spreadsheets first.
+
+  if (isDriveUrl) {
+    return url.replace('drive:', '');
+  }
+
+
+  return url;
+};
+
+const PlaceItem = ({ children, place: { name, category, source: _source, tags, collection, delivery }, ...props }) => {
+  const source = parseImageSource(_source);
+
+  return (
+    <PlaceItemContainer {...props}>
+    <Link to={`/${_.kebabCase(name)}`}>
+      <PlaceImage flex={1} source={source} />
+      </Link>
+      <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
+    </PlaceItemContainer> 
+  );
+}
 
 PlaceItem.defaultProps = {
   place: {
