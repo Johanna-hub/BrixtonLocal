@@ -10,7 +10,7 @@ import _ from "lodash";
 import Link from './Link';
 
 const PlaceImage = ({ source, ...props }) => (
-  <Image source={source} {...props} />
+  <Image width="100%" source={source} {...props} />
 );
 
 const CategoryName = styled(Text)`
