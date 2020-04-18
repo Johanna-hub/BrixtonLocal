@@ -3,7 +3,7 @@ import FillBox from './FillBox';
 import FillImage from './FillImage';
 import PlaceItem from './PlaceItem';
 import PlaceList from './PlaceList';
-
+import BusinessInfo from './BusinessInfo';
 
 export { 
   CategoryList,
@@ -11,4 +11,5 @@ export {
   FillImage,
   PlaceItem,
   PlaceList,
+  BusinessInfo,
 };

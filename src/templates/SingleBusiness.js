@@ -1,8 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Box from '#components/atoms/Box';
+import { BusinessInfo } from '#components/app';
 
 const SingleBusiness = ({ data }) => {
-
   const {
     Address,
     Category_1,
@@ -22,27 +23,57 @@ const SingleBusiness = ({ data }) => {
     Website
   } = data.googleSheetValue;
 
+  const normaliseTags = (tags) => {
+    if (Array.isArray(tags)) {
+      return tags;
+    }
+    if (typeof tags === 'string') {
+      return tags.split(",");
+    }
+    return [];
+  }
+
+  const socialMediaUrl = (link, network) => {
+    if (link.includes(`${network}`)){
+      return link
+    } else if (link.includes("@")) {
+      const Handle = link.split("@")[1]
+      return `https://www.${network}.com/${Handle}`
+    } else if (link) {
+      return `https://www.${network}.com/${link}`
+    }
+  } 
+
+  const websiteUrl = (site) => {
+    if (site.includes("http")) {
+      return site
+    } else if (site) {
+      return `https://${site}`
+    }
+  }
+    
+  const BusinessListing = {
+    name: Name,
+    address: Address,
+    category: Category_1,
+    collection: Collection,
+    delivery: Delivery,
+    description: Short_description,
+    lockdown: Lockdown_services,
+    ordering: How_to_order,
+    facebook: socialMediaUrl(Facebook, "facebook"),
+    source: Image_Url,
+    instagram: socialMediaUrl(Instagram, "instagram"),
+    twitter: socialMediaUrl(Twitter, "twitter"),
+    tags: normaliseTags(Tags),
+    ordering_hours: Ordering_timescales_opening_hours,
+    website: websiteUrl(Website)
+  }
+  
   return (
-    <div>
-      <ul>
-        <li>Name: {Name}</li>
-        <li>Address: {Address}</li>
-        <li>Category_1: {Category_1}</li>
-        <li>Category_2__only_if_relevant_: {Category_2__only_if_relevant_}</li>
-        <li>Collection: {Collection}</li>
-        <li>Delivery: {Delivery}</li>
-        <li>Facebook: {Facebook}</li>
-        <li>Image_Url: {Image_Url}</li>
-        <li>How_to_order: {How_to_order}</li>
-        <li>Instagram: {Instagram}</li>
-        <li>Lockdown_services: {Lockdown_services}</li>
-        <li>Ordering_timescales_opening_hours: {Ordering_timescales_opening_hours}</li>
-        <li>Short_description: {Short_description}</li>
-        <li>Tags: {Tags}</li>
-        <li>Twitter: {Twitter}</li>
-        <li>Website: {Website}</li>
-      </ul>
-    </div>
+    <Box>
+      <BusinessInfo width="100%" items={BusinessListing}/>
+  </Box>
   );
 };
 
