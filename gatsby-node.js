@@ -77,7 +77,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       createPage({
         path: categoryPath,
-        component: path.resolve(`src/templates/singleCategory.js`),
+        component: path.resolve(`src/templates/SingleCategory.js`),
         context: {
           Category_1,
         },
