@@ -51,8 +51,8 @@ const SingleTag = ({ data }) => {
 }
 
   export const query = graphql`
-  query TagQuery($Tags : String!) {
-    allGoogleSheetValue (filter: { Tags : { in : [$Tags] }}) {
+  query TagQuery($TagRegex : String!) {
+    allGoogleSheetValue (filter: { Tags : { regex : $TagRegex }}) {
       edges {
         node {          
           Name      
