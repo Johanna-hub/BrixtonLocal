@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
-import { PlaceList, CategoryList } from '#components/app';
+import { PlaceList, CategoryList, NavBar } from '#components/app';
 
 // TODO: Fix categories and move to constants file
 const categories = [{
@@ -55,11 +55,11 @@ const extractItemData = ({
 const IndexPage = ({ data }) => {
   const allBusinessData = data.allGoogleSheetValue.edges;
 
-
   const places = allBusinessData.map(extractItemData);
   return (
     <Box>
       <SEO title="Home page" />
+      <NavBar></NavBar>
       <CategoryList title="Browse Brixton by Category" items={categories} />
       <Box px={[16, 40]}>
         <PlaceList width="100%" items={places} />

@@ -70,6 +70,7 @@ const CategoriesHeading = styled(Text)`
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
+  margin-top: 20%;
 `;
 
 const CategoryList = ({ title, items, ...props }) => (
