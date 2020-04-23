@@ -75,7 +75,9 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
     {tags && (
       <Row flexWrap="wrap">
         {(tags || []).map((tag, i) => (
-          <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
+          <Link to={`/tag/${_.kebabCase(tag)}`}>
+            <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
+          </Link>
         ))}
       </Row>
     )}
