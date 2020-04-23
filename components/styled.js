@@ -7,7 +7,7 @@ import styledP, { css as cssP, ThemeProvider as ThemeProviderP } from '@elementa
 let styled, ThemeProvider, css;
 
 
-if (Platform.OS === 'figma') {
+if (Platform.OS === 'figma' || Platform.OS === 'sketch') {
   styled = styledP;
   ThemeProvider = ThemeProviderP;
   css = cssP;

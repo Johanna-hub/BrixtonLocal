@@ -1,0 +1,32 @@
+{
+  "name": "brixton-local",
+  "version": "0.1.0",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "skpm": {
+    "name": "brixton-local",
+    "manifest": "src/manifest.json",
+    "main": "brixton-local.sketchplugin"
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "render": "skpm-build --watch --run",
+    "render:once": "skpm-build --run",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.5.16"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8",
+    "react": "^16.13.1",
+    "react-sketchapp": "^3.0.0",
+    "react-sketchapp-router": "^0.1.4",
+    "react-test-renderer": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
+  },
+  "author": "macintoshhelper <macintoshhelper@users.noreply.github.com>"
+}
