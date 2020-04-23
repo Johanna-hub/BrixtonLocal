@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
 import { PlaceList } from '#components/app';
+import { NavBar } from "../../components/app";
 
 const normaliseTags = (tags) => {
   if (Array.isArray(tags)) {
@@ -43,6 +44,7 @@ const SingleCategory = ({ data }) => {
   return (
     <Box>
       <SEO title="Category page" />
+      <NavBar></NavBar>
       <p>Category: {CategoryTitle}</p>
       <Box px={[16, 40]}>
         <PlaceList width="100%" items={CategoryItems} />

@@ -1,9 +1,7 @@
 import React from "react"
-import _ from "lodash";
 
 import Link from './Link';
 import styled from 'styled-components'
-import { Box } from '../atoms';
 
 const NavItem = styled(Link)`
   text-decoration: none;
