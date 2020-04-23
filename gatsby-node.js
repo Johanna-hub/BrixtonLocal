@@ -76,12 +76,13 @@ exports.createPages = ({ actions, graphql }) => {
 
      
      TagsArray.forEach(tag=> {
-      const tagPath = `/tag/${_.kebabCase(tag)}/`
+      const tagPath = `/tag/${_.kebabCase(tag)}/`;
+      const regTag = tag.replace(/\+/g, "\\+");
       createPage({
         path: tagPath,
         component: path.resolve(`src/templates/SingleTag.js`),
         context: {
-          TagRegex: `/${tag}/i`,
+          TagRegex: `/${regTag}/i`,
         },
       })
     })
