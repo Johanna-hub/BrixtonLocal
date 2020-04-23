@@ -36,7 +36,7 @@ const CategoryImage = ({ source, count, ...props }) => (
     justifyContent="center"
     alignItems="center"
     position="relative"
-    {...(Platform.OS === 'figma' ? { width: '100%' } : { flex: 1} )}
+    // {...(Platform.OS === 'figma' ? { width: '100%' } : { flex: 1} )}
     {...props}
   >
     <FillBox />
@@ -55,9 +55,9 @@ CategoryImage.defaultProps = {
   height: 80,
 };
 
-const CategoryTile = ({ item: { name, count }, ...props }) => (
+const CategoryTile = ({ item: { name, count, source }, ...props }) => (
   <Box {...props}>
-    <CategoryImage count={count} />
+    <CategoryImage count={count} source={source} />
     <CategoryTitle my={1}>
       {name}
     </CategoryTitle>
@@ -73,7 +73,7 @@ const CategoriesHeading = styled(Text)`
 `;
 
 const CategoryList = ({ title, items, ...props }) => (
-  <Box p={3} {...props}>
+  <Box p={3} maxWidth={360} {...props}>
     <CategoriesHeading mb={3}>
       {title}
     </CategoriesHeading>
