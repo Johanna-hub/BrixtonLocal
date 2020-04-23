@@ -6,58 +6,27 @@ import { isLast } from '../utils';
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
 
-const PlaceImage = ({ source, ...props }) => (
-  <Image width="100%" source={source} {...props} />
+import { PlaceImage, CategoryName, CollectionMethod, PlaceName } from './PlaceItem';
+import Tag from './Tag';
+
+const BusinessSocialMedia = ({ instagram, twitter, facebook }) => (
+  <>
+    {instagram && (
+      <Text as_="a" href={`${instagram}`}>Instagram</Text>
+    )}
+    {twitter && (
+      <Text as_="a" href={`${twitter}`}>Twitter</Text>
+    )}
+    {facebook && (
+      <Text as_="a" href={`${facebook}`}>Facebook</Text>
+    )}
+  </>
 );
 
-const CategoryName = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-
-  color: #878787;
-`;
-
-const CollectionMethod = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-`;
-
-const PlaceName = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-
-  color: #000000;
-`;
-
-const TagText = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 10px;
-`;
-
-const Tag = ({ type, ...props }) => (
-  <Box bg="black" py={1} px={12} borderRadius={4} {...props}>
-    <TagText color="#fff">
-      {type}
-    </TagText>
-  </Box>
-)
 
 const PlaceInfo = ({ name, category, tags, collection, delivery, description, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }) => (
-  <Box width="100%">
-    <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
+  <Box flex={1}>
+    <Row flex={1} justifyContent="space-between" mt={2} mb={1}>
       <CategoryName>
         {(category || '').toUpperCase()}
       </CategoryName>
@@ -66,19 +35,23 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
         {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
       </CollectionMethod>
     </Row>
-    <PlaceName mb={2}>
-    {name}
-    </PlaceName>
-    <p>
-    {address}
-    </p>
-    <p>{description}</p>
-    <p style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</p>
-    <p>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</p>
-    <a href={`${website}`}>{website}</a>
-    <a href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram</a>
-    <a href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>Twitter</a>
-    <a href={`${facebook}`} style={{ display: facebook ? "block" : "none" }}>Facebook</a>
+    <Box>
+      <PlaceName mb={2}>
+      {name}
+      </PlaceName>
+      <Text>
+      {address}
+      </Text>
+      {description && (
+        <Text>{description}</Text>
+      )}
+      {lockdown && (
+        <Text>Lockdown services: {lockdown}</Text>
+      )}
+      <Text>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</Text>
+      <Text as_="a" href={`${website}`}>{website}</Text>
+      <BusinessSocialMedia instagram={instagram} twitter={twitter} facebook={facebook} />
+    </Box>
     {tags && (
       <Row flexWrap="wrap">
         {(tags || []).map((tag, i) => (
@@ -106,12 +79,12 @@ const parseImageSource = (url) => {
   return url;
 };
 
-const BusinessInfo = ({ items: { name, category, tags, collection, delivery, description, source: _source, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }, ...props }) => {
+const BusinessInfo = ({ place: { name, category, tags, collection, delivery, description, source: _source, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }, ...props }) => {
     const source = parseImageSource(_source);
 
   return (
     <PlaceItemContainer {...props}>
-    <PlaceImage flex={1} source={source} />
+      <PlaceImage flex={1} source={source} />
       <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} description={description} address={address} lockdown={lockdown} ordering={ordering} ordering_hours={ordering_hours} website={website} facebook={facebook} instagram={instagram} twitter={twitter} />
     </PlaceItemContainer> 
   );

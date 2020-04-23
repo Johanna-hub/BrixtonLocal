@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 import { isLast } from '../utils';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
-import _ from "lodash";
 
 import Link from './Link';
+import Tag from './Tag';
 
-const PlaceImage = ({ source, ...props }) => (
-  <Image width="100%" source={source} {...props} />
+export const PlaceImage = ({ source, ...props }) => (
+  <Image flex={1} minHeight={360} source={source} {...props} />
 );
 
-const CategoryName = styled(Text)`
+export const CategoryName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
@@ -23,7 +24,7 @@ const CategoryName = styled(Text)`
   color: #878787;
 `;
 
-const CollectionMethod = styled(Text)`
+export const CollectionMethod = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
@@ -32,7 +33,7 @@ const CollectionMethod = styled(Text)`
   text-align: center;
 `;
 
-const PlaceName = styled(Text)`
+export const PlaceName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
@@ -42,21 +43,7 @@ const PlaceName = styled(Text)`
   color: #000000;
 `;
 
-const TagText = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 10px;
-`;
 
-const Tag = ({ type, ...props }) => (
-  <Box bg="black" py={1} px={12} borderRadius={4} {...props}>
-    <TagText color="#fff">
-      {type}
-    </TagText>
-  </Box>
-)
 
 const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
@@ -83,7 +70,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
 );
 
 const PlaceItemContainer = ({ children, ...props }) => (
-  <Box {...props}>
+  <Box flex={1} {...props}>
     {children}
   </Box>
 );
@@ -113,10 +100,11 @@ const PlaceItem = ({ children, place: { name, category, source: _source, tags, c
 }
 
 PlaceItem.defaultProps = {
+  name: 'PlaceItem',
   place: {
     name: 'Ashby\'s Shop',
     category: 'groceries',
-    source: 'https://media-cdn.tripadvisor.com/media/photo-s/15/7d/ca/8a/bakery.jpg',
+    source: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80',
     tags: ['Fruit & Veg', 'Bread'],
   },
 };
