@@ -3,36 +3,8 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
-import { PlaceList, CategoryList, NavBar } from '#components/app';
+import { PlaceList } from '#components/app';
 
-// TODO: Fix categories and move to constants file
-const categories = [{
-  name: 'Community',
-  count: 30,
-}, {
-  name: 'Fitness',
-  count: 25,
-}, {
-  name: 'Groceries',
-  count: 20,
-}, {
-  name: 'Services',
-  count: 15,
-}, {
-  name: 'Shops',
-  count: 16,
-}, {
-  name: 'Takeaway',
-  count: 11,
-}, {
-  name: 'Wine + Beer',
-  count: 8,
-}
-]
-
-// e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
-
-// returns ['tag-name', 'tag-name-1', 'bread', ...]
 const normaliseTags = (tags) => {
   if (Array.isArray(tags)) {
     return tags;
@@ -62,26 +34,27 @@ const extractItemData = ({
   delivery: Delivery, 
 })
 
-const IndexPage = ({ data }) => {
+const SingleCategory = ({ data }) => {
   const allBusinessData = data.allGoogleSheetValue.edges;
 
-  const places = allBusinessData.map(extractItemData);
+
+  const CategoryItems = allBusinessData.map(extractItemData);
+  const CategoryTitle = CategoryItems[0].category;
   return (
     <Box>
-      <SEO title="Home page" />
-      <NavBar></NavBar>
-      <CategoryList title="Browse Brixton by Category" items={categories} />
+      <SEO title="Category page" />
+      <p>Category: {CategoryTitle}</p>
       <Box px={[16, 40]}>
-        <PlaceList width="100%" items={places} />
+        <PlaceList width="100%" items={CategoryItems} />
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
     </Box>
   )
 }
-
-export const query = graphql`
-  query NameQuery {
-    allGoogleSheetValue {
+  
+  export const query = graphql`
+  query CategoryQuery ($Category_1: String!) {
+    allGoogleSheetValue (filter: { Category_1 : { in: [$Category_1] }}) {
       edges {
         node {          
           Name      
@@ -96,5 +69,4 @@ export const query = graphql`
     }
   }
 `
-
-export default IndexPage
+export default SingleCategory

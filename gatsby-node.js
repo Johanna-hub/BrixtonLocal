@@ -37,7 +37,9 @@ exports.createPages = ({ actions, graphql }) => {
       allGoogleSheetValue {
         edges {
           node {          
-            Name          
+            Name  
+            Tags
+            Category_1        
           }
         }
       }
@@ -67,12 +69,40 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    // categories.forEach(edge => {
-    //   createPage({
-    //     path: `category/${categoryName}`,
-    //     component: path.resolve(`src/templates`)
-    //   })
-    // })
+    let tagNames = result.data.allGoogleSheetValue.edges;
+
+    tagNames.forEach(item => {
+      let { Tags } = item.node
+      TagsArray = Tags.split(",").map(tag => tag.trim());
+
+     
+      TagsArray.forEach(tag=> {
+        const tagPath = `/tag/${_.kebabCase(tag)}/`;
+        const regTag = tag.replace(/\+/g, "\\+");
+        createPage({
+          path: tagPath,
+          component: path.resolve(`src/templates/SingleTag.js`),
+          context: {
+          TagRegex: `/${regTag}/i`,
+          },
+        })
+      })
+
+      const allCategories = result.data.allGoogleSheetValue.edges 
+
+      allCategories.forEach(edge => {
+        const { Category_1 } = edge.node
+        const categoryPath = `/category/${_.kebabCase(Category_1)}/`
+
+        createPage({
+          path: categoryPath,
+          component: path.resolve(`src/templates/SingleCategory.js`),
+          context: {
+            Category_1,
+          },
+        })
+      }) 
+    })
   })
 }
 

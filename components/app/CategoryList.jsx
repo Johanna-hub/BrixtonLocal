@@ -9,6 +9,9 @@ import { Row } from '../molecules';
 
 import FillBox from './FillBox';
 import FillImage from './FillImage';
+import _ from "lodash";
+
+import Link from './Link';
 
 const CategoryTitle = styled(Text)`
   font-family: SF Pro Text;
@@ -57,10 +60,12 @@ CategoryImage.defaultProps = {
 
 const CategoryTile = ({ item: { name, count }, ...props }) => (
   <Box {...props}>
+  <Link to={`/category/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>
     <CategoryImage count={count} />
     <CategoryTitle my={1}>
       {name}
     </CategoryTitle>
+    </Link>
   </Box>
 );
 

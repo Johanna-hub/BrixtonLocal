@@ -3,36 +3,8 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
-import { PlaceList, CategoryList, NavBar } from '#components/app';
+import { PlaceList } from '#components/app';
 
-// TODO: Fix categories and move to constants file
-const categories = [{
-  name: 'Community',
-  count: 30,
-}, {
-  name: 'Fitness',
-  count: 25,
-}, {
-  name: 'Groceries',
-  count: 20,
-}, {
-  name: 'Services',
-  count: 15,
-}, {
-  name: 'Shops',
-  count: 16,
-}, {
-  name: 'Takeaway',
-  count: 11,
-}, {
-  name: 'Wine + Beer',
-  count: 8,
-}
-]
-
-// e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
-
-// returns ['tag-name', 'tag-name-1', 'bread', ...]
 const normaliseTags = (tags) => {
   if (Array.isArray(tags)) {
     return tags;
@@ -62,26 +34,25 @@ const extractItemData = ({
   delivery: Delivery, 
 })
 
-const IndexPage = ({ data }) => {
+const SingleTag = ({ data }) => {
   const allBusinessData = data.allGoogleSheetValue.edges;
 
-  const places = allBusinessData.map(extractItemData);
+  const TagItems = allBusinessData.map(extractItemData);
+
   return (
     <Box>
-      <SEO title="Home page" />
-      <NavBar></NavBar>
-      <CategoryList title="Browse Brixton by Category" items={categories} />
+      <SEO title="Tag page" />
       <Box px={[16, 40]}>
-        <PlaceList width="100%" items={places} />
+        <PlaceList width="100%" items={TagItems} />
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
     </Box>
   )
 }
 
-export const query = graphql`
-  query NameQuery {
-    allGoogleSheetValue {
+  export const query = graphql`
+  query TagQuery($TagRegex : String!) {
+    allGoogleSheetValue (filter: { Tags : { regex : $TagRegex }}) {
       edges {
         node {          
           Name      
@@ -96,5 +67,4 @@ export const query = graphql`
     }
   }
 `
-
-export default IndexPage
+export default SingleTag
