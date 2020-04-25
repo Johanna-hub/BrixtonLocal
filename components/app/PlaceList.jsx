@@ -6,7 +6,7 @@ import { Box } from '../atoms';
 import PlaceItem from './PlaceItem';
 
 const PlaceList = ({ items: places, style, ...props }) => (
-  <Box {...props}>
+  <Box {...props} style={{"margin-top": "10.1vh"}}>
     {places && places.map((place, i) => (
       <PlaceItem
         key={i}

@@ -31,14 +31,14 @@ const Tags = ({data}) => {
   const TagMenuArray = flatTagArray.filter((x, i, a) => a.indexOf(x) === i);
   
     return (
-      <Box>
+      <div>
         <SEO title="Categories page" />
         <NavBar></NavBar>
-        <Box px={[16, 40]}>
+        <div px={[16, 40]}>
         <TagMenu width="100%" items={TagMenuArray} />
-        </Box>
+        </div>
         {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
-      </Box>
+      </div>
     )
   }
 

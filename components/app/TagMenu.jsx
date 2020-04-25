@@ -7,12 +7,13 @@ import AllTags from './AllTags';
 import styled from 'styled-components';
 
 const TagContainer = styled.div`
-margin-top: 20%
+margin-top: 10vh;
+flex-direction: row;
+flex-flow: row-wrap;
+margin-left: 1.5rem;
 `
-
 const TagMenu = ({ items: tags, ...props }) => (
-  <Box {...props}>
-    <TagContainer>
+  <TagContainer {...props}>
       {tags && tags.map((tag, i) => (
         <AllTags
           key={i}
@@ -20,8 +21,7 @@ const TagMenu = ({ items: tags, ...props }) => (
           mb={(!isLast(i, tags.length)) ? 4 : 0}
         />
       ))}
-    </TagContainer>
-  </Box>
+  </TagContainer>
 );
 
 export default TagMenu;

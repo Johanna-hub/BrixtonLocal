@@ -45,7 +45,6 @@ const SingleCategory = ({ data }) => {
     <Box>
       <SEO title="Category page" />
       <NavBar></NavBar>
-      <p>Category: {CategoryTitle}</p>
       <Box px={[16, 40]}>
         <PlaceList width="100%" items={CategoryItems} />
       </Box>

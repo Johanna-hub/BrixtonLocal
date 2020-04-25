@@ -19,11 +19,9 @@ text-align: center;
 display: inline-flex;
 align-items: center;
 `
-
 const CategoryLink = styled(Link)`
   font-family: SF Pro Text;
   font-style: normal;
-  font-weight: 600;
   font-size: 24px;
   line-height: 10px;
   color: #FFFFFF

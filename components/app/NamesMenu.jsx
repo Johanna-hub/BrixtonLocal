@@ -7,7 +7,7 @@ import AllNames from './AllNames';
 import styled from 'styled-components';
 
 const NameContainer = styled.div`
-margin-top: 8vh;
+margin-top: 10vh;
 padding-left: 1rem;
 margin-left: 8px;
 `
