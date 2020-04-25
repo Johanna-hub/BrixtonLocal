@@ -44,24 +44,31 @@ const IndexPage = ({ data }) => {
   const categories = [{
     name: 'Community',
     count: 0,
+    source: "",
   }, {
     name: 'Fitness',
     count: 0,
+    source: "",
   }, {
     name: 'Groceries',
     count: 0,
+    source: "",
   }, {
       name: 'Services',
       count: 0,
+      source: "",
   }, {
       name: 'Shops',
       count: 0,
+      source: "",
   }, {
     name: 'Takeaway',
     count: 0,
+    source: "",
   }, {
     name: 'Wine + Beer',
     count: 0,
+    source: "",
   }
   ]
 
@@ -70,7 +77,10 @@ const IndexPage = ({ data }) => {
   places.forEach(place => {
     for(let i = 0; i < categories.length; i++){
       if(place.category === categories[i].name){
-        categories[i].count++
+        categories[i].count++;
+        if(categories[i].count === 1) {
+          categories[i].source = place.source;
+        }
       }
     }
   });
