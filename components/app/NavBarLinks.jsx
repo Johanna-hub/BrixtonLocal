@@ -42,7 +42,7 @@ const NavItem = styled(Link)`
 const NavbarLinks = () => {
   return (
       <>
-      <NavItem to="/all-categories">Categories</NavItem>
+      <NavItem to="/categories">Categories</NavItem>
       <NavItem to="/all-tags">Tags</NavItem>
       <NavItem to="/all-listings">List all</NavItem>
       <NavItem to="/about">About</NavItem>

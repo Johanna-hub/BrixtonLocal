@@ -4,6 +4,7 @@ import FillImage from './FillImage';
 import PlaceItem from './PlaceItem';
 import PlaceList from './PlaceList';
 import NavBar from './NavBar';
+import CategoryMenu from './CategoryMenu';
 
 export { 
   CategoryList,
@@ -12,4 +13,5 @@ export {
   PlaceItem,
   PlaceList,
   NavBar,
+  CategoryMenu,
 };
