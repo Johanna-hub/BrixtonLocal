@@ -6,6 +6,7 @@ import PlaceList from './PlaceList';
 import NavBar from './NavBar';
 import CategoryMenu from './CategoryMenu';
 import TagMenu from './TagMenu';
+import NamesMenu from './NamesMenu';
 
 export { 
   CategoryList,
@@ -16,4 +17,5 @@ export {
   NavBar,
   CategoryMenu,
   TagMenu,
+  NamesMenu,
 };

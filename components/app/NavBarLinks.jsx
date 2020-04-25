@@ -45,7 +45,7 @@ const NavbarLinks = () => {
       <NavItem to="/">Home</NavItem>
       <NavItem to="/categories">Categories</NavItem>
       <NavItem to="/tags">Tags</NavItem>
-      <NavItem to="/all-listings">List all</NavItem>
+      <NavItem to="/all">List all</NavItem>
       <NavItem to="/about">About</NavItem>
       </>
   )

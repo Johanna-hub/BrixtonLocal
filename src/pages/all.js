@@ -3,29 +3,28 @@ import React from "react"
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
 
-import { NavBar, CategoryMenu } from '#components/app';
+import { NavBar, NamesMenu } from '#components/app';
 
 const extractItemData = ({
   node: {
-    Category_1 = '',
+    Name = '',
   } = [],
 }) => ([
-  Category_1,
+  Name
 ])
 
-const Categories = ({data}) => {
+const All = ({data}) => {
   
-  const allCategoryData = data.allGoogleSheetValue.edges;
-  const categories = allCategoryData.map(extractItemData);
-  const flatArray = categories.flat().filter(category => category !== "").sort()
-  const categoryMenuArray = flatArray.filter((x, i, a) => a.indexOf(x) === i)
-
+  const allNameData = data.allGoogleSheetValue.edges;
+  const names = allNameData.map(extractItemData);
+  const namesArray = names.flat().sort();
+ 
     return (
       <Box>
         <SEO title="Categories page" />
         <NavBar></NavBar>
         <Box px={[16, 40]}>
-        <CategoryMenu width="100%" items={categoryMenuArray} />
+        <NamesMenu width="100%" items={namesArray} />
         </Box>
         {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
       </Box>
@@ -33,15 +32,15 @@ const Categories = ({data}) => {
   }
 
   export const query = graphql`
-  query AllCategoryQuery {
+  query AllNamesQuery {
     allGoogleSheetValue {
       edges {
         node {              
-          Category_1
+          Name
         }
       }
     }
   }
 `
   
-  export default Categories
+  export default All
