@@ -61,9 +61,11 @@ const Tag = ({ type, ...props }) => (
 const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
-      <CategoryName>
-        {(category || '').toUpperCase()}
-      </CategoryName>
+      <Link to={`/category/${_.kebabCase(category)}`} style={{ textDecoration: 'none' }}>
+        <CategoryName>
+          {(category || '').toUpperCase()}
+        </CategoryName>
+      </Link>
       <CollectionMethod>
         {(delivery === "TRUE" ? "Delivery" : '')}
         {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
