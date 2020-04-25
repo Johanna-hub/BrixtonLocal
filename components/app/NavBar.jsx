@@ -50,6 +50,7 @@ const Navbox = styled.div`
     top: 8vh;
     left: ${props => (props.open ? "-100%" : "0")};
     align-items: flex-start;
+    margin-left: 8px;
   }
 `
 

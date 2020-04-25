@@ -8,8 +8,8 @@ import styled from 'styled-components';
 
 const LinkLabel = styled.span`
 background-color: rgba(103, 128, 159, 1);
-padding-left: 2rem;
 margin-bottom: 16px;
+padding-left: 1.5rem;
 width: 200px;
 height: 30px;
 left: 32px;
@@ -24,7 +24,7 @@ const CategoryLink = styled(Link)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 10px;
   color: #FFFFFF
 `;

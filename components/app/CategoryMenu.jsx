@@ -8,6 +8,8 @@ import styled from 'styled-components';
 
 const CategoryContainer = styled.div`
 margin-top: 8vh;
+padding-left: 1rem;
+margin-left: 8px;
 `
 
 const CategoryTitle = styled.p`

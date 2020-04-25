@@ -7,7 +7,9 @@ import AllNames from './AllNames';
 import styled from 'styled-components';
 
 const NameContainer = styled.div`
-margin-top: 20%
+margin-top: 8vh;
+padding-left: 1rem;
+margin-left: 8px;
 `
 const NamesMenu = ({ items: names, ...props }) => (
   <Box {...props}>
