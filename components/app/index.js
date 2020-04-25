@@ -5,6 +5,7 @@ import PlaceItem from './PlaceItem';
 import PlaceList from './PlaceList';
 import NavBar from './NavBar';
 import CategoryMenu from './CategoryMenu';
+import TagMenu from './TagMenu';
 
 export { 
   CategoryList,
@@ -14,4 +15,5 @@ export {
   PlaceList,
   NavBar,
   CategoryMenu,
+  TagMenu,
 };

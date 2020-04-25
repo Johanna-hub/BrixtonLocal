@@ -2,7 +2,6 @@ import React from "react"
 
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
-import _ from "lodash";
 
 import { NavBar, CategoryMenu } from '#components/app';
 
@@ -19,7 +18,7 @@ const Categories = ({data}) => {
   const allCategoryData = data.allGoogleSheetValue.edges;
   const categories = allCategoryData.map(extractItemData);
   const flatArray = categories.flat().filter(category => category !== "")
-  const categoryMenuArray = flatArray.filter((x, i, a) => a.indexOf(x) == i)
+  const categoryMenuArray = flatArray.filter((x, i, a) => a.indexOf(x) === i)
 
     return (
       <Box>
