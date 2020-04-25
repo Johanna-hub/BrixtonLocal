@@ -67,10 +67,8 @@ const IndexPage = ({ data }) => {
 
   const allBusinessData = data.allGoogleSheetValue.edges;
   const places = allBusinessData.map(extractItemData);
-  console.log(places);
   places.forEach(place => {
     for(let i = 0; i < categories.length; i++){
-
       if(place.category === categories[i].name){
         categories[i].count++
       }
