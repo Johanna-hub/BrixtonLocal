@@ -6,29 +6,6 @@ import Box from '#components/atoms/Box';
 import { PlaceList, CategoryList } from '#components/app';
 
 // TODO: Fix categories and move to constants file
-const categories = [{
-  name: 'Community',
-  count: 30,
-}, {
-  name: 'Fitness',
-  count: 25,
-}, {
-  name: 'Groceries',
-  count: 20,
-}, {
-  name: 'Services',
-  count: 15,
-}, {
-  name: 'Shops',
-  count: 16,
-}, {
-  name: 'Takeaway',
-  count: 11,
-}, {
-  name: 'Wine + Beer',
-  count: 8,
-}
-]
 
 // e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
 
@@ -63,10 +40,42 @@ const extractItemData = ({
 })
 
 const IndexPage = ({ data }) => {
+
+  const categories = [{
+    name: 'Community',
+    count: 0,
+  }, {
+    name: 'Fitness',
+    count: 0,
+  }, {
+    name: 'Groceries',
+    count: 0,
+  }, {
+      name: 'Services',
+      count: 0,
+  }, {
+      name: 'Shops',
+      count: 0,
+  }, {
+    name: 'Takeaway',
+    count: 0,
+  }, {
+    name: 'Wine + Beer',
+    count: 0,
+  }
+  ]
+
   const allBusinessData = data.allGoogleSheetValue.edges;
-
-
   const places = allBusinessData.map(extractItemData);
+  console.log(places);
+  places.forEach(place => {
+    for(let i = 0; i < categories.length; i++){
+
+      if(place.category === categories[i].name){
+        categories[i].count++
+      }
+    }
+  });
   return (
     <Box>
       <SEO title="Home page" />
