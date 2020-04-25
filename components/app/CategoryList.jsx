@@ -19,13 +19,14 @@ const CategoryTitle = styled(Text)`
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
+  color:black;
 `;
 
 const CategoryNumber = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 32px;
   line-height: 30px;
 
   text-align: center;
@@ -59,7 +60,7 @@ CategoryImage.defaultProps = {
 };
 
 const CategoryTile = ({ item: { name, count, source }, ...props }) => (
-  <Box {...props}>
+  <Box {...props} style={{"text-align":"center"}}>
   <Link to={`/category/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>
     <CategoryImage count={count} source={source} />
     <CategoryTitle my={1}>
