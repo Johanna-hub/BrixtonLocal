@@ -8,12 +8,12 @@ const Navigation = styled.nav`
   background-color: #fff;
   position: relative;
   justify-content: space-between;
-  text-transform: uppercase;
   margin: 0 auto;
   z-index: 2;
   align-self: center;
 
   @media (max-width: 768px) {
+    align-self: flex-start;
     position: fixed;
     height: 8vh;
     top: 0;
@@ -45,11 +45,11 @@ const Navbox = styled.div`
     position: fixed;
     width: 100%;
     justify-content: flex-start;
-    padding-top: 10vh;
     background-color: #fff;
     transition: all 0.3s ease-in;
     top: 8vh;
     left: ${props => (props.open ? "-100%" : "0")};
+    align-items: flex-start;
   }
 `
 

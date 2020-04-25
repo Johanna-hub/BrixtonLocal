@@ -8,10 +8,12 @@ const NavItem = styled(Link)`
   color: #111;
   display: inline-block;
   white-space: nowrap;
-  margin: 0 1vw;
+  margin: 8px;
+  margin-top:0;
   transition: all 200ms ease-in;
   position: relative;
   font-family: SF Pro Text;
+  font-size: 24px;
 
   :after {
     position: absolute;
@@ -34,9 +36,10 @@ const NavItem = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding-bottom: 8px;
     font-size: 1.5rem;
     z-index: 6;
+    padding-left: 1.5rem;
   }
 `
 const NavbarLinks = () => {
