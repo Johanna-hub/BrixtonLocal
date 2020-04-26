@@ -2,16 +2,18 @@ import React from "react"
 import styled from 'styled-components'
 import { Box } from '../atoms';
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled.p`
 font-family: Raleway;
 font-style: normal;
 font-weight: bold;
 font-size: 48px;
 text-align: center;
+margin-bottom: 0.75rem;
+margin-top: 0.75rem;
 `
 const HeaderContainer = styled.div`
 margin: 2vh;
-margin-top: 10vh;
+margin-top: 8vh;
 `
 const HeaderText = styled.p`
 font-family: Montserrat;
