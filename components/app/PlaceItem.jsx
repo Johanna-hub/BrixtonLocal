@@ -27,7 +27,7 @@ const CollectionMethod = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 14px;
   text-align: center;
   color: rgba(103, 128, 159, 1);
