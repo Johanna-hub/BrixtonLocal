@@ -79,7 +79,7 @@ const CategoriesHeading = styled(Text)`
 `;
 
 const CategoryList = ({ title, items, ...props }) => (
-  <Box p={3} {...props}>
+  <Box p={3} {...props} style={{"margin-bottom":"3vh"}}>
     <CategoriesHeading mb={3}>
       {title}
     </CategoriesHeading>
