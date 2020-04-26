@@ -17,26 +17,27 @@ const CategoryName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 14px;
 
-  color: #878787;
+  color: rgba(103, 128, 159, 1);
 `;
 
 const CollectionMethod = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 14px;
   text-align: center;
+  color: rgba(103, 128, 159, 1);
 `;
 
 const PlaceName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 21px;
 
   color: #000000;
@@ -46,12 +47,12 @@ const TagText = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 14px;
+  line-height: 16px;
 `;
 
 const Tag = ({ type, ...props }) => (
-  <Box bg="black" py={1} px={12} borderRadius={4} {...props}>
+  <Box bg="rgba(103, 128, 159, 1)" py={1} px={16} borderRadius={4} {...props}>
     <TagText color="#fff">
       {type}
     </TagText>
@@ -61,21 +62,23 @@ const Tag = ({ type, ...props }) => (
 const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
-      <CategoryName>
-        {(category || '').toUpperCase()}
-      </CategoryName>
+      <Link to={`/category/${_.kebabCase(category)}`} style={{ textDecoration: 'none', "margin-bottom":"8px" }}>
+        <CategoryName>
+          {(category || '').toUpperCase()}
+        </CategoryName>
+      </Link>
       <CollectionMethod>
         {(delivery === "TRUE" ? "Delivery" : '')}
         {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-    <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>{name}</Link>
+    <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none', "color":"black" }}>{name}</Link>
     </PlaceName>
     {tags && (
       <Row flexWrap="wrap">
         {(tags || []).map((tag, i) => (
-          <Link to={`/tag/${_.kebabCase(tag)}`}>
+          <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top":"8px" }}>
             <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
           </Link>
         ))}
