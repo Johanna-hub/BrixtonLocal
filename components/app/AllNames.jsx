@@ -12,13 +12,20 @@ const NameLink = styled(Link)`
   font-size: 24px;
 `;
 
+const NameBox = styled(Box)`
+  align-items: center;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+   }
+`
+
 const AllNames = ({ name }) => {
  
   return (
-      <Box>
+      <NameBox>
         <NameLink to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none', color : "inherit" }}>{name}
         </NameLink>
-      </Box>
+      </NameBox>
   )}
 
 AllNames.defaultProps = {

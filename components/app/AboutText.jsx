@@ -6,9 +6,10 @@ const AboutText = styled.p`
 font-family: SF Pro Text;
 font-size: 18px;
 `
-const AboutContainer = styled.div`
+const AboutContainer = styled(Box)`
 margin: 2vh;
 margin-top: 10vh;
+align-items: center;
 `
 const AboutLink = styled.a`
 color:rgba(103, 128, 159, 1);
