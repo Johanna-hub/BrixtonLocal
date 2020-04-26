@@ -42,15 +42,16 @@ const NavItem = styled(Link)`
     padding-left: 1.5rem;
   }
 `
+
 const NavbarLinks = () => {
   return (
-      <>
+      <div>
       <NavItem to="/">Home</NavItem>
       <NavItem to="/categories">Categories</NavItem>
       <NavItem to="/tags">Tags</NavItem>
       <NavItem to="/all">List all</NavItem>
       <NavItem to="/about">About</NavItem>
-      </>
+      </div>
   )
 }
 
