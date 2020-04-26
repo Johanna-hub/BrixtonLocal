@@ -7,7 +7,6 @@ import AllCategories from './AllCategories';
 import styled from 'styled-components';
 
 const CategoryContainer = styled.div`
-margin-top: 10vh;
 padding-left: 1rem;
 margin-left: 8px;
 `
