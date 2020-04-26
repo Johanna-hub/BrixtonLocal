@@ -3,22 +3,9 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
-import { PlaceList, CategoryList } from '#components/app';
+import { PlaceList, CategoryList, NavBar, Header } from '#components/app';
 
 // TODO: Fix categories and move to constants file
-const categories = [{
-  name: 'Community',
-  count: 30,
-}, {
-  name: 'Fitness',
-  count: 25
-}, {
-  name: 'Groceries',
-  count: 20,
-}, {
-  name: 'Services',
-  count: 15,
-}]
 
 // e.g. normalise `fruit-veg` -> `Fruit & Veg` with react-i18next or other i18n lib
 
@@ -53,14 +40,56 @@ const extractItemData = ({
 })
 
 const IndexPage = ({ data }) => {
+
+  const categories = [{
+    name: 'Community',
+    count: 0,
+    source: "",
+  }, {
+    name: 'Fitness',
+    count: 0,
+    source: "",
+  }, {
+    name: 'Groceries',
+    count: 0,
+    source: "",
+  }, {
+      name: 'Services',
+      count: 0,
+      source: "",
+  }, {
+      name: 'Shops',
+      count: 0,
+      source: "",
+  }, {
+    name: 'Takeaway',
+    count: 0,
+    source: "",
+  }, {
+    name: 'Wine + Beer',
+    count: 0,
+    source: "",
+  }
+  ]
+
   const allBusinessData = data.allGoogleSheetValue.edges;
-
-
   const places = allBusinessData.map(extractItemData);
+  places.forEach(place => {
+    for(let i = 0; i < categories.length; i++){
+      if(place.category === categories[i].name){
+        categories[i].count++;
+        if(categories[i].count === 1) {
+          categories[i].source = place.source;
+        }
+      }
+    }
+  });
   return (
     <Box>
       <SEO title="Home page" />
-      <CategoryList title="Browse Brixton by Category" items={categories} />
+      <NavBar></NavBar>
+      <Header></Header>
+      <CategoryList items={categories} />
       <Box px={[16, 40]}>
         <PlaceList width="100%" items={places} />
       </Box>
