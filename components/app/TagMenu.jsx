@@ -2,7 +2,6 @@ import React from 'react';
 
 import { isLast } from '../utils';
 
-import { Box } from '../atoms';
 import AllTags from './AllTags';
 import styled from 'styled-components';
 

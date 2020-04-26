@@ -44,7 +44,7 @@ const SingleTag = ({ data }) => {
     <Box>
       <SEO title="Tag page" />
       <NavBar></NavBar>
-      <Box px={[16, 40]}>
+      <Box px={[16, 40]} style={{ "margin-top":"10.1vh" }}>
         <PlaceList width="100%" items={TagItems} />
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}

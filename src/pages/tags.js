@@ -1,7 +1,6 @@
 import React from "react"
 
 import SEO from "../components/SEO"
-import Box from '#components/atoms/Box';
 
 import { NavBar, TagMenu } from '#components/app';
 

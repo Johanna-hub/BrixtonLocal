@@ -40,12 +40,12 @@ const SingleCategory = ({ data }) => {
 
 
   const CategoryItems = allBusinessData.map(extractItemData);
-  const CategoryTitle = CategoryItems[0].category;
+  // const CategoryTitle = CategoryItems[0].category;
   return (
     <Box>
       <SEO title="Category page" />
       <NavBar></NavBar>
-      <Box px={[16, 40]}>
+      <Box px={[16, 40]} style={{ "margin-top":"10.1vh" }}>
         <PlaceList width="100%" items={CategoryItems} />
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
