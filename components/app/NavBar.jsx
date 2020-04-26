@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import NavbarLinks from "./NavbarLinks"
+import NavBarLinks from "./NavBarLinks"
 import styled from 'styled-components'
 
 const Navigation = styled.nav`
@@ -86,7 +86,7 @@ const Hamburger = styled.div`
     top: 10px;
   }
 `
-const Navbar = () => {
+const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
@@ -99,15 +99,15 @@ const Navbar = () => {
       </Toggle>
       {navbarOpen ? (
         <Navbox>
-          <NavbarLinks />
+          <NavBarLinks />
         </Navbox>
       ) : (
         <Navbox open>
-          <NavbarLinks />
+          <NavBarLinks />
         </Navbox>
       )}
     </Navigation>
   )
 }
 
-export default Navbar
+export default NavBar

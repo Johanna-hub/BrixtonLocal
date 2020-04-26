@@ -43,16 +43,16 @@ const NavItem = styled(Link)`
   }
 `
 
-const NavbarLinks = () => {
+const NavBarLinks = () => {
   return (
-      <div>
+      <>
       <NavItem to="/">Home</NavItem>
       <NavItem to="/categories">Categories</NavItem>
       <NavItem to="/tags">Tags</NavItem>
       <NavItem to="/all">List all</NavItem>
       <NavItem to="/about">About</NavItem>
-      </div>
+      </>
   )
 }
 
-export default NavbarLinks
+export default NavBarLinks
