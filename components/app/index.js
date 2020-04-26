@@ -8,6 +8,7 @@ import CategoryMenu from './CategoryMenu';
 import TagMenu from './TagMenu';
 import NamesMenu from './NamesMenu';
 import AboutText from './AboutText';
+import Header from './Header';
 
 export { 
   CategoryList,
@@ -20,4 +21,5 @@ export {
   TagMenu,
   NamesMenu,
   AboutText,
+  Header,
 };
