@@ -5,6 +5,8 @@ import Box from '#components/atoms/Box';
 
 import { NavBar, NamesMenu } from '#components/app';
 
+import _ from 'lodash';
+
 const extractItemData = ({
   node: {
     Name = '',
@@ -17,7 +19,7 @@ const All = ({data}) => {
   
   const allNameData = data.allGoogleSheetValue.edges;
   const names = allNameData.map(extractItemData);
-  const namesArray = names.flat().sort();
+  const namesArray = _.flatten(names).sort();
  
     return (
       <Box>

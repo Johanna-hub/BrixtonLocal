@@ -5,6 +5,8 @@ import Box from '#components/atoms/Box';
 
 import { NavBar, CategoryMenu } from '#components/app';
 
+import _ from 'lodash';
+
 const extractItemData = ({
   node: {
     Category_1 = '',
@@ -17,7 +19,7 @@ const Categories = ({data}) => {
   
   const allCategoryData = data.allGoogleSheetValue.edges;
   const categories = allCategoryData.map(extractItemData);
-  const flatArray = categories.flat().filter(category => category !== "").sort()
+  const flatArray = _.flatten(categories).filter(category => category !== "").sort()
   const categoryMenuArray = flatArray.filter((x, i, a) => a.indexOf(x) === i)
 
     return (

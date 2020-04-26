@@ -4,6 +4,8 @@ import SEO from "../components/SEO"
 
 import { NavBar, TagMenu } from '#components/app';
 
+import _ from 'lodash';
+
 const extractItemData = ({
   node: {
     Tags = '',
@@ -26,7 +28,7 @@ const Tags = ({data}) => {
   
   const allTagData = data.allGoogleSheetValue.edges;
   const tags = allTagData.map(extractItemData);
-  const flatTagArray = tags.flat([2]).filter(category => category !== "").map(tag => tag.trim()).map(tag => tag.toLowerCase()).sort();
+  const flatTagArray = _.flattenDeep(tags).filter(category => category !== "").map(tag => tag.trim()).map(tag => tag.toLowerCase()).sort();
   const TagMenuArray = flatTagArray.filter((x, i, a) => a.indexOf(x) === i);
   
     return (
