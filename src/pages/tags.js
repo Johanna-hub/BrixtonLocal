@@ -3,6 +3,7 @@ import React from "react"
 import SEO from "../components/SEO"
 
 import { NavBar, TagMenu } from '#components/app';
+import Box from '#components/atoms/Box';
 
 import _ from 'lodash';
 
@@ -32,14 +33,14 @@ const Tags = ({data}) => {
   const TagMenuArray = flatTagArray.filter((x, i, a) => a.indexOf(x) === i);
   
     return (
-      <div>
+      <Box>
         <SEO title="Categories page" />
         <NavBar></NavBar>
         <div px={[16, 40]}>
         <TagMenu width="100%" items={TagMenuArray} />
         </div>
         {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
-      </div>
+      </Box>
     )
   }
 

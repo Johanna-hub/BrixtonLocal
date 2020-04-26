@@ -10,7 +10,7 @@ const LinkLabel = styled.span`
 background-color: rgba(103, 128, 159, 1);
 margin-bottom: 16px;
 padding-left: 1.5rem;
-width: 200px;
+width: 150px;
 height: 30px;
 left: 32px;
 top: 161px;

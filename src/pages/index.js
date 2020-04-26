@@ -89,7 +89,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Home page" />
       <NavBar></NavBar>
       <Header></Header>
-      <CategoryList title="Browse Brixton by Category" items={categories} />
+      <CategoryList items={categories} />
       <Box px={[16, 40]}>
         <PlaceList width="100%" items={places} />
       </Box>
