@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Box from '#components/atoms/Box';
 import { BusinessInfo } from '#components/app';
+import { NavBar } from "../../components/app";
 
 const SingleBusiness = ({ data }) => {
   const {
@@ -72,7 +73,8 @@ const SingleBusiness = ({ data }) => {
   
   return (
     <Box>
-      <BusinessInfo width="100%" items={BusinessListing}/>
+      <NavBar></NavBar>
+      <BusinessInfo items={BusinessListing}/>
   </Box>
   );
 };

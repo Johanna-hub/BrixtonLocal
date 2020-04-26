@@ -5,37 +5,46 @@ import { isLast } from '../utils';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
+import Link from './Link';
+import _ from "lodash";
 
 const PlaceImage = ({ source, ...props }) => (
-  <Image width="100%" source={source} {...props} />
+  <BusinessImage width="100%" source={source} {...props} />
 );
+
+const BusinessImage = styled(Image)`
+  width: 25%;
+  @media (max-width: 768px) {
+    width: 75%;
+    padding-top: 10.1vh;
+   }
+`
 
 const CategoryName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 14px;
-
-  color: #878787;
+  color: rgba(103, 128, 159, 1);
 `;
 
 const CollectionMethod = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 14px;
   text-align: center;
+  color: rgba(103, 128, 159, 1);
 `;
 
 const PlaceName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 21px;
-
   color: #000000;
 `;
 
@@ -43,12 +52,44 @@ const TagText = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 600;
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 14px;
+  line-height: 16px;
 `;
 
+const BusinessBox = styled(Box)`
+  width:25%;
+  @media (max-width: 768px) {
+    width: 75%;
+   }
+`
+const AddressText = styled(Text)`
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 14px;
+`;
+
+const BusinessText = styled(Text)`
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-top: 8px;
+`;
+
+const BusinessLink = styled.a`
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-size: 16px;
+  margin-top: 16px;
+  text-decoration: none;
+  color: rgba(103, 128, 159, 1);
+  font-weight: 600;
+`
+
 const Tag = ({ type, ...props }) => (
-  <Box bg="black" py={1} px={12} borderRadius={4} {...props}>
+  <Box bg="rgba(103, 128, 159, 1)" py={1} px={16} borderRadius={4} {...props}>
     <TagText color="#fff">
       {type}
     </TagText>
@@ -56,53 +97,54 @@ const Tag = ({ type, ...props }) => (
 )
 
 const PlaceInfo = ({ name, category, tags, collection, delivery, description, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }) => (
-  <Box width="100%">
+  <BusinessBox>
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
-      <CategoryName>
-        {(category || '').toUpperCase()}
-      </CategoryName>
+      <Link to={`/category/${_.kebabCase(category)}`} style={{ textDecoration: 'none', "margin-bottom":"8px" }}>
+        <CategoryName>
+          {(category || '').toUpperCase()}
+        </CategoryName>
+      </Link>
       <CollectionMethod>
         {(delivery === "TRUE" ? "Delivery" : '')}
         {(collection === "TRUE" && delivery === "TRUE" ? " & Collection" : collection === "TRUE" ? "Collection" : '')}
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-    {name}
+      {name}
     </PlaceName>
-    <p>
-    {address}
-    </p>
-    <p>{description}</p>
-    <p style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</p>
-    <p>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</p>
-    <a href={`${website}`}>{website}</a>
-    <a href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram</a>
-    <a href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>Twitter</a>
-    <a href={`${facebook}`} style={{ display: facebook ? "block" : "none" }}>Facebook</a>
+    <AddressText>
+      {address}
+    </AddressText>
+    <BusinessText>{description}</BusinessText>
+    <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</BusinessText>
+    <BusinessText>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</BusinessText>
+    <BusinessLink href={`${website}`}>{website}</BusinessLink>
+    <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>{instagram}</BusinessLink>
+    <BusinessLink href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>{twitter}</BusinessLink>
+    <BusinessLink href={`${facebook}`} style={{ display: facebook ? "block" : "none" }}>{facebook}</BusinessLink>
     {tags && (
-      <Row flexWrap="wrap">
+      <Row flexWrap="wrap" style={{"margin-top":"16px"}}>
         {(tags || []).map((tag, i) => (
+          <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top":"8px" }}>
           <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
+          </Link>
         ))}
       </Row>
     )}
-  </Box>
+  </BusinessBox>
 );
 
 const PlaceItemContainer = ({ children, ...props }) => (
-  <Box {...props}>
+  <Box {...props} style={{"align-items":"center"}}>
     {children}
   </Box>
 );
 
 const parseImageSource = (url) => {
   const isDriveUrl = url.includes('drive.google.com');
-
   if (isDriveUrl) {
     return `http://drive.google.com/uc?export=view&id=${url.split('=')[1]}`
   }
-
-
   return url;
 };
 
