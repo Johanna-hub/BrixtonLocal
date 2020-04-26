@@ -3,6 +3,7 @@ import FillBox from './FillBox';
 import FillImage from './FillImage';
 import PlaceItem from './PlaceItem';
 import PlaceList from './PlaceList';
+import BusinessInfo from './BusinessInfo';
 import NavBar from './NavBar';
 import CategoryMenu from './CategoryMenu';
 import TagMenu from './TagMenu';
@@ -16,6 +17,7 @@ export {
   FillImage,
   PlaceItem,
   PlaceList,
+  BusinessInfo,
   NavBar,
   CategoryMenu,
   TagMenu,

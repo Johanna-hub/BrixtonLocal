@@ -12,11 +12,13 @@ const CategoryBox = styled(Box)`
   align-items: flex-start;
   }
 `
-
 const CategoryContainer = styled.div`
-  padding-top: 10.1vh;
   padding-left: 1rem;
   margin-left: 8px;
+  padding-top: 4vh;
+  @media (max-width: 768px) {
+    padding-top: 10.1vh;
+   }
 `
 const CategoryMenu = ({ items: categories, ...props }) => (
   <CategoryBox {...props} style={{}}>
