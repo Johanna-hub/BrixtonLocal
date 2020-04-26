@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import CategoryMenu from './CategoryMenu';
 import TagMenu from './TagMenu';
 import NamesMenu from './NamesMenu';
+import AboutText from './AboutText';
 
 export { 
   CategoryList,
@@ -18,4 +19,5 @@ export {
   CategoryMenu,
   TagMenu,
   NamesMenu,
+  AboutText,
 };
