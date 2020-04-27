@@ -56,7 +56,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Box>
-      <SEO title="Home page" />
+      <SEO title="Brixton Local.Life" />
       <NavBar></NavBar>
       <Header></Header>
       <CategoryList items={Object.values(categories)} />
