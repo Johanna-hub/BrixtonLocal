@@ -14,6 +14,9 @@ margin-top: 0.75rem;
 const HeaderContainer = styled.div`
 margin: 2vh;
 margin-top: 4vh;
+@media (max-width: 768px) {
+  margin-top: 10.1vh;
+ }
 `
 const HeaderText = styled.p`
 font-family: Montserrat;
