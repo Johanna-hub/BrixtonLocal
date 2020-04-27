@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import SEO from "../components/SEO"
 import Box from '#components/atoms/Box';
 import { PlaceList } from '#components/app';
-import { NavBar } from "../../components/app";
+import { CategoryTitle, NavBar } from "../../components/app"
 
 const normaliseTags = (tags) => {
   if (Array.isArray(tags)) {
@@ -35,15 +35,17 @@ const extractItemData = ({
   delivery: Delivery, 
 })
 
-const SingleTag = ({ data }) => {
+const SingleTag = ({ data, pageContext }) => {
   const allBusinessData = data.allGoogleSheetValue.edges;
 
   const TagItems = allBusinessData.map(extractItemData);
+  const TagTitle = pageContext.TagTitle.tag;
 
   return (
     <Box>
       <SEO title="Tag page" />
       <NavBar></NavBar>
+      <CategoryTitle items={TagTitle}></CategoryTitle>
       <Box px={[16, 40]} style={{ "margin-top":"10.1vh" }}>
         <PlaceList width="100%" items={TagItems} />
       </Box>
