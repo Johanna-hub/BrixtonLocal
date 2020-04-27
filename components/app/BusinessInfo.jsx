@@ -58,6 +58,7 @@ const TagText = styled(Text)`
 
 const BusinessBox = styled(Box)`
   width:25%;
+  margin-bottom: 4vh;
   @media (max-width: 768px) {
     width: 75%;
    }
