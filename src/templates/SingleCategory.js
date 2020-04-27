@@ -2,9 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import SEO from "../components/SEO"
-import Box from '#components/atoms/Box';
+import { Box, Text } from '#components/atoms';
 import { PlaceList } from '#components/app';
-import { NavBar } from "../../components/app";
+import { NavBar, CategoryTitle } from "../../components/app";
 
 const normaliseTags = (tags) => {
   if (Array.isArray(tags)) {
@@ -40,12 +40,14 @@ const SingleCategory = ({ data }) => {
 
 
   const CategoryItems = allBusinessData.map(extractItemData);
-  // const CategoryTitle = CategoryItems[0].category;
+  const CategoryPage = CategoryItems[0].category;
+  console.log(CategoryPage)
   return (
     <Box>
       <SEO title="Category page" />
       <NavBar></NavBar>
-      <Box px={[16, 40]} style={{ "margin-top":"10.1vh" }}>
+      <CategoryTitle items={CategoryPage}></CategoryTitle>
+      <Box px={[16, 40]}>
         <PlaceList width="100%" items={CategoryItems} />
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}

@@ -6,10 +6,16 @@ import AllTags from './AllTags';
 import styled from 'styled-components';
 
 const TagContainer = styled.div`
-margin-top: 10vh;
-flex-direction: row;
-flex-flow: row-wrap;
-margin-left: 1.5rem;
+  margin-top: 4vh;
+  flex-direction: row;
+  flex-flow: row-wrap;
+  margin-left: 12rem;
+  margin-right: 12rem;
+  @media (max-width: 768px) {
+    margin-left: 1.5rem;
+    margin-right: 1rem;
+    margin-top:10.1vh;
+   }
 `
 const TagMenu = ({ items: tags, ...props }) => (
   <TagContainer {...props}>
@@ -17,7 +23,7 @@ const TagMenu = ({ items: tags, ...props }) => (
         <AllTags
           key={i}
           tag={tag}
-          mb={(!isLast(i, tags.length)) ? 4 : 0}
+          mb={(!isLast(i, tags.length)) ? 4 : 0} 
         />
       ))}
   </TagContainer>

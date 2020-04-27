@@ -19,7 +19,6 @@ const CategoryName = styled(Text)`
   font-weight: 600;
   font-size: 16px;
   line-height: 14px;
-
   color: rgba(103, 128, 159, 1);
 `;
 
@@ -39,7 +38,6 @@ const PlaceName = styled(Text)`
   font-weight: 600;
   font-size: 24px;
   line-height: 21px;
-
   color: #000000;
 `;
 
@@ -88,10 +86,15 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
 );
 
 const PlaceItemContainer = ({ children, ...props }) => (
-  <Box {...props}>
+  <ItemBox {...props}>
     {children}
-  </Box>
+  </ItemBox>
 );
+
+const ItemBox = styled(Box)`
+flex-basis: 25%;
+margin: 16px;
+`
 
 const parseImageSource = (url) => {
   const isDriveUrl = url.includes('drive.google.com');

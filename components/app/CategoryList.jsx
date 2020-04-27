@@ -35,6 +35,15 @@ const CategoryNumber = styled(Text)`
   z-index: 5; /* Not sure why this is needed? ... Here come exponentially increasing z-index overrides... */
 `;
 
+const CategoryBox = styled(Box)`
+  margin-bottom: 3vh; 
+  align-items: center;
+  @media (max-width: 768px) {
+   align-items: flex-start;
+   overflow: scroll;
+  }
+`
+
 const CategoryImage = ({ source, count, ...props }) => (
   <Box
     justifyContent="center"
@@ -79,7 +88,7 @@ const CategoriesHeading = styled(Text)`
 `;
 
 const CategoryList = ({ title, items, ...props }) => (
-  <Box p={3} {...props} style={{"margin-bottom":"3vh"}}>
+  <CategoryBox p={3} {...props}>
     <CategoriesHeading mb={3}>
       {title}
     </CategoriesHeading>
@@ -88,7 +97,7 @@ const CategoryList = ({ title, items, ...props }) => (
         <CategoryTile key={(item && item.name) || i} mr={!isLast(i, items.length) ? 2 : 0} item={item} />
       ))}
     </Row>
-  </Box>
+  </CategoryBox>
 );
 
 export default CategoryList;

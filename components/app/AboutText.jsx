@@ -6,9 +6,16 @@ const AboutText = styled.p`
 font-family: SF Pro Text;
 font-size: 18px;
 `
-const AboutContainer = styled.div`
+const AboutContainer = styled(Box)`
 margin: 2vh;
-margin-top: 10vh;
+margin-top: 4vh;
+align-items: center;
+@media (max-width: 768px) {
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+  margin-top:10.1vh;
+  align-items: flex-start;
+ }
 `
 const AboutLink = styled.a`
 color:rgba(103, 128, 159, 1);

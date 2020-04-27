@@ -6,12 +6,22 @@ import { Box } from '../atoms';
 import AllCategories from './AllCategories';
 import styled from 'styled-components';
 
+const CategoryBox = styled(Box)`
+  align-items: center;
+  @media (max-width: 768px) {
+  align-items: flex-start;
+  }
+`
 const CategoryContainer = styled.div`
-padding-left: 1rem;
-margin-left: 8px;
+  padding-left: 1rem;
+  margin-left: 8px;
+  padding-top: 4vh;
+  @media (max-width: 768px) {
+    padding-top: 10.1vh;
+   }
 `
 const CategoryMenu = ({ items: categories, ...props }) => (
-  <Box {...props}>
+  <CategoryBox {...props} style={{}}>
   <CategoryContainer>
       {categories && categories.map((category, i) => (
         <AllCategories
@@ -21,7 +31,7 @@ const CategoryMenu = ({ items: categories, ...props }) => (
         />
       ))}
     </CategoryContainer>
-  </Box>
+  </CategoryBox>
 );
 
 export default CategoryMenu;
