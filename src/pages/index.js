@@ -46,10 +46,12 @@ const IndexPage = ({ data }) => {
   const allBusinessData = data.allGoogleSheetValue.edges;
   const places = allBusinessData.map(extractItemData);
   places.forEach(place => {
-    const category = (categories[place.category] ||
+    if(place.category) {
+      const category = (categories[place.category] ||
       {name: place.category, count: 0, source: place.source});
       categories[place.category] = category;
       category.count++;
+    }
   });
 
   return (
