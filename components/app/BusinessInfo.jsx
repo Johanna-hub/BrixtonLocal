@@ -119,10 +119,10 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
     <BusinessText>{description}</BusinessText>
     <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</BusinessText>
     <BusinessText>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</BusinessText>
-    <BusinessLink href={`${website}`}>{website}</BusinessLink>
-    <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>{instagram}</BusinessLink>
-    <BusinessLink href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>{twitter}</BusinessLink>
-    <BusinessLink href={`${facebook}`} style={{ display: facebook ? "block" : "none" }}>{facebook}</BusinessLink>
+    <BusinessLink href={`${website}`} style={{ display: website ? "block" : "none" }}>{`${website}`.split("//")[1]}</BusinessLink>
+    <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram: @{`${instagram}`.split(".com/")[1]}</BusinessLink>
+    <BusinessLink href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>Twitter: @{`${twitter}`.split(".com/")[1]}</BusinessLink>
+    <BusinessLink href={`${facebook}`} style={{ display: facebook ? "block" : "none" }}>Facebook: @{`${facebook}`.split(".com/")[1]}</BusinessLink>
     {tags && (
       <Row flexWrap="wrap" style={{"margin-top":"16px"}}>
         {(tags || []).map((tag, i) => (
