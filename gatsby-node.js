@@ -83,7 +83,8 @@ exports.createPages = ({ actions, graphql }) => {
           path: tagPath,
           component: path.resolve(`src/templates/SingleTag.js`),
           context: {
-          TagRegex: `/${regTag}/i`,
+            TagRegex: `/${regTag}/i`,
+            TagTitle: {tag}
           },
         })
       })
