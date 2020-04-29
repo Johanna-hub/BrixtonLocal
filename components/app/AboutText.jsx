@@ -27,7 +27,7 @@ const About = () => {
   return (
       <Box>
         <AboutContainer>
-          <AboutText>Brixton Local.Life kickstarted the <AboutLink href="https://www.lovelocal.life/">LoveLocal.Life</AboutLink> project.</AboutText>  
+          <AboutText>Brixton Local.Life kickstarted the <AboutLink href="https://www.lovelocal.life/">LoveLocal.Life</AboutLink> project.  Check out the <AboutLink href="https://www.sydenhamlocal.life/">Sydenham</AboutLink> and <AboutLink href="https://www.lewishamlocal.life/">Lewisham</AboutLink> sites!</AboutText>  
           <AboutText>We started this website during the Covid-19 Lockdown to connect people with businesses and services still operating in Brixton, and to help businesses move online quickly.</AboutText>
           <AboutText>We thought if we could support local people and businesses in this small way, we might just come out of this stronger and more aware of what’s on offer in our amazing local area, and how they continued to serve us, even under the most difficult circumstances.</AboutText>
           <AboutText>We’ve defined Brixton pretty loosely, taking in bits of Herne Hill, Stockwell, Clapham and Streatham, depending on delivery areas, and so there’s a range of services.</AboutText>
