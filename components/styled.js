@@ -1,38 +1,32 @@
-import { Platform } from 'react-primitives';
+const { Platform } = require('react-primitives');
+
 // FIXME: This is an unmaintained fork! Used for `shouldForwardProp` in native platforms (there's an open PR)
 // Once the issue is merged/resolved, this should be changed back to `styled-components`
-import styledW, { css as cssW, ThemeProvider as ThemeProviderW } from '@elemental-design/styled-components';
-import styledP, { css as cssP, ThemeProvider as ThemeProviderP } from '@elemental-design/styled-components/primitives';
+const styled = Platform.select({
+  web: () => require('@elemental-design/styled-components'),
+  default: () => require('@elemental-design/styled-components/primitives'),
+})();
 
-let styled, ThemeProvider, css;
+function _interopDefault(ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+const styled_default = _interopDefault(styled);
 
 if (Platform.OS === 'figma') {
-  styled = styledP;
-  ThemeProvider = ThemeProviderP;
-  css = cssP;
-
-  styled.div = styled.View;
-  styled.button = styled.View;
-  styled.span = styled.Text;
-  styled.p = styled.Text;
-  styled.h1 = styled.Text;
-  styled.h2 = styled.Text;
-  styled.h3 = styled.Text;
-  styled.h4 = styled.Text;
-  styled.h5 = styled.Text;
-  styled.h6 = styled.Text;
-  styled.img = styled.Image;
+  styled_default.div = styled_default.View;
+  styled_default.button = styled_default.View;
+  styled_default.span = styled_default.Text;
+  styled_default.p = styled_default.Text;
+  styled_default.h1 = styled_default.Text;
+  styled_default.h2 = styled_default.Text;
+  styled_default.h3 = styled_default.Text;
+  styled_default.h4 = styled_default.Text;
+  styled_default.h5 = styled_default.Text;
+  styled_default.h6 = styled_default.Text;
+  styled_default.img = styled_default.Image;
 } else {
-  styled = styledW;
-  ThemeProvider = ThemeProviderW;
-  css = cssW;
-
-  styled.View = styled.div;
-  styled.Text = styled.span;
-  styled.Image = styled.img.attrs(({ source }) => ({ src: source }));
+  styled_default.View = styled_default.div;
+  styled_default.Text = styled_default.span;
+  styled_default.Image = styled_default.img.attrs(({ source }) => ({ src: source }));
 }
 
-export { ThemeProvider, css };
-
-export default styled;
+module.exports = styled;
