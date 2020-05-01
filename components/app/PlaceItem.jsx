@@ -86,15 +86,15 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
 );
 
 const PlaceItemContainer = ({ children, ...props }) => (
-  <ItemBox {...props}>
+  <Box width={['100%', 'calc(50% - 16px)', 'calc(33.33333% - 16px)']} mx={[null, 8]} {...props}>
     {children}
-  </ItemBox>
+  </Box>
 );
 
-const ItemBox = styled(Box)`
-flex-basis: 25%;
-margin: 16px;
-`
+// const ItemBox = styled(Box)`
+// flex-basis: 25%;
+// margin: 16px;
+// `
 
 const parseImageSource = (url) => {
   const isDriveUrl = url.includes('drive.google.com');

@@ -60,8 +60,10 @@ const IndexPage = ({ data }) => {
       <NavBar></NavBar>
       <Header></Header>
       <CategoryList items={Object.values(categories)} />
-      <Box px={[16, 40]}>
-        <PlaceList width="100%" items={places} />
+      <Box alignItems="center">
+        <Box px={[16, 40, 0]} maxWidth={[null, null, 1280]}>
+          <PlaceList width="100%" items={places} />
+        </Box>
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
     </Box>
