@@ -11,6 +11,7 @@ import NamesMenu from './NamesMenu';
 import AboutText from './AboutText';
 import Header from './Header';
 import CategoryTitle from './CategoryTitle';
+import Tag from './Tag';
 
 export { 
   CategoryList,
@@ -26,4 +27,5 @@ export {
   AboutText,
   Header,
   CategoryTitle,
+  Tag,
 };

@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from "lodash";
+import chroma from 'chroma-js';
 
 import { isLast } from '../utils';
+import { useHover } from '../hooks';
 
 import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
-import _ from "lodash";
+import FillBox from './FillBox';
+import Tag from './Tag';
 
 import Link from './Link';
 
-const PlaceImage = ({ source, ...props }) => (
-  <Image width="100%" source={source} {...props} />
-);
+const PlaceImage = React.forwardRef(({ source, ...props }, ref) => (
+  <Image ref={ref} width="100%" source={source} {...props} />
+));
 
 const CategoryName = styled(Text)`
   font-family: SF Pro Text;
@@ -41,21 +45,6 @@ const PlaceName = styled(Text)`
   color: #000000;
 `;
 
-const TagText = styled(Text)`
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
-`;
-
-const Tag = ({ type, ...props }) => (
-  <Box bg="rgba(103, 128, 159, 1)" py={1} px={16} borderRadius={4} {...props}>
-    <TagText color="#fff">
-      {type}
-    </TagText>
-  </Box>
-)
 
 const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
   <Box width="100%">
@@ -109,11 +98,27 @@ const parseImageSource = (url) => {
 
 const PlaceItem = ({ children, place: { name, category, source: _source, tags, collection, delivery }, ...props }) => {
   const source = parseImageSource(_source);
+  const [hoverRef, isHovering] = useHover();
 
   return (
     <PlaceItemContainer {...props}>
-      <Link to={`/business/${_.kebabCase(name)}`}>
-        <PlaceImage flex={1} source={source} />
+      <Link to={`/business/${_.kebabCase(name)}`} style={{ position: 'relative' }}>
+        {isHovering && (
+          <Box
+            position="absolute"
+            top={0}
+            left={0}
+            width="100%"
+            height="100%"
+            bg="rgba(0, 0, 0, 0.25)"
+            style={{ pointerEvents: 'none' }}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Text color="white" fontSize={16} fontFamily="Montserrat" fontWeight="bold">SEE MORE INFO ></Text>
+          </Box>
+        )}
+        <PlaceImage ref={hoverRef} flex={1} source={source} />
       </Link>
       <PlaceInfo name={name} category={category} tags={tags} collection={collection} delivery={delivery} />
     </PlaceItemContainer> 

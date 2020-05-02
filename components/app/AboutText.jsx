@@ -21,6 +21,9 @@ width: 75%;
 `
 const AboutLink = styled.a`
 color:rgba(103, 128, 159, 1);
+:any-link {
+  text-decoration: underline;
+}
 `
 
 const About = () => {
