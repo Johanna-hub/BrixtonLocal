@@ -60,8 +60,16 @@ const IndexPage = ({ data }) => {
       <NavBar></NavBar>
       <Header></Header>
       <CategoryList items={Object.values(categories)} />
-      <Box px={[16, 40]}>
-        <PlaceList width="100%" items={places} />
+      <Box alignItems="center">
+        {/* Tablet is 8px to cancel out marginHorizontal 8px on PlaceItem */}
+        <Box px={[16, 8, 0]} maxWidth={[null, null, 1280]}>
+          <PlaceList
+            width="100%"
+            marginX={[null, null, 2, -2]}
+            width={[null, null, null, 'calc(100% + 16px)']}
+            items={places}
+          />
+        </Box>
       </Box>
       {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
     </Box>

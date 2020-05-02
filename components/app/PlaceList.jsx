@@ -1,20 +1,16 @@
 import React from 'react';
 
-import { isLast } from '../utils';
+import { isLast, extendStyles } from '../utils';
 
 import { Box } from '../atoms';
 import PlaceItem from './PlaceItem';
-import styled from 'styled-components';
 
-const PlaceBox = styled(Box)`
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
-@media (max-width: 768px) {
- flex-direction:column;
- flex-wrap:no-wrap;
-}
-`
+const PlaceBox = extendStyles(Box, () => ({
+  justifyContent: 'space-around',
+  flexDirection: ['column', 'row'],
+  flexWrap: ['no-wrap', 'wrap'],
+}));
+
 
 const PlaceList = ({ items: places, style, ...props }) => (
   <PlaceBox {...props}>

@@ -64,17 +64,17 @@ const CategoryImage = ({ source, count, ...props }) => (
   </Box>
 );
 CategoryImage.defaultProps = {
-  width: 100,
-  height: 80,
+  minWidth: 100,
+  height: [80, 100, 120],
 };
 
 const CategoryTile = ({ item: { name, count, source }, ...props }) => (
-  <Box {...props} style={{"text-align":"center"}}>
-  <Link to={`/category/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>
-    <CategoryImage count={count} source={source} />
-    <CategoryTitle my={1}>
-      {name}
-    </CategoryTitle>
+  <Box {...props} flex={[null, 1]} style={{ textAlign: 'center' }}>
+    <Link to={`/category/${_.kebabCase(name)}`} style={{ textDecoration: 'none' }}>
+      <CategoryImage count={count} source={source} />
+      <CategoryTitle my={1}>
+        {name}
+      </CategoryTitle>
     </Link>
   </Box>
 );
@@ -88,11 +88,11 @@ const CategoriesHeading = styled(Text)`
 `;
 
 const CategoryList = ({ title, items, ...props }) => (
-  <CategoryBox p={3} {...props}>
+  <CategoryBox alignItems="center" p={3} {...props}>
     <CategoriesHeading mb={3}>
       {title}
     </CategoriesHeading>
-    <Row overflow="scroll">
+    <Row overflow="scroll" width={[null, '100%']} maxWidth={1280}>
       {(items || []).map((item, i) => (
         <CategoryTile key={(item && item.name) || i} mr={!isLast(i, items.length) ? 2 : 0} item={item} />
       ))}
