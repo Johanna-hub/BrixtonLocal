@@ -118,7 +118,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
     </AddressText>
     <BusinessText>{description}</BusinessText>
     <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</BusinessText>
-    <BusinessText>{(ordering ? `How to order: ${ordering}.  ${ordering_hours}` : "")}</BusinessText>
+    <BusinessText>{(ordering ? `How to order: ${ordering}  ${ordering_hours}` : "")}</BusinessText>
     <BusinessLink href={`${website}`} style={{ display: website ? "block" : "none" }}>{`${website}`.split("//")[1]}</BusinessLink>
     <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram: @{`${instagram}`.split(".com/")[1]}</BusinessLink>
     <BusinessLink href={`${twitter}`} style={{ display: twitter ? "block" : "none" }}>Twitter: @{`${twitter}`.split(".com/")[1]}</BusinessLink>
