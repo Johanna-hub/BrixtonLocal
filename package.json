@@ -23,6 +23,7 @@
     "react-helmet": "^5.2.1",
     "react-native-web": "^0.12.2",
     "react-primitives": "^0.8.1",
+    "react-string-replace": "^0.4.4",
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5"
   },
