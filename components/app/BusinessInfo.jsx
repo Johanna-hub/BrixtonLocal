@@ -93,10 +93,20 @@ const BusinessLink = styled.a`
 
 const amendLinks = (text) => {
     const regexWeb = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-    const regexEmail = /(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g;
-    return reactStringReplace(text, regexWeb, (match, i) => (
-        <a href={match}>{match}</a>
-    ));
+    const regexEmail = /(.+@.+\..+)/g;
+    const webReplace = reactStringReplace(text, regexWeb, (match, i) => {
+        const pattern = /^((http|https):\/\/)/;
+
+        if(!pattern.test(match)) {
+            match = "https://" + match;
+        }
+       return  <a href={match}>{match}</a>
+    })
+
+     const replacedText = reactStringReplace(webReplace, regexEmail, (match, i) => (
+         <a href={`mailto:${match}`}>{match}</a>
+    ))
+    return replacedText;
 }
 
 
@@ -112,9 +122,10 @@ const Tag = ({ type, ...props }) => (
 const PlaceInfo = ({ name, category, tags, collection, delivery, description, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }) => {
 
     const linkedDescription = amendLinks(description);
-    console.log(linkedDescription, "linked des")
-    console.log(typeof(linkedDescription));
-
+    const linkedLockdown = amendLinks(lockdown);
+    const linkedOrdering = amendLinks(ordering);
+    const linkedOrderingHours = amendLinks(ordering_hours);
+    
     return (
         <BusinessBox>
             <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
@@ -135,8 +146,8 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
                 {address}
             </AddressText>
             <BusinessText>{linkedDescription}</BusinessText>
-            <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {lockdown}</BusinessText>
-            <BusinessText>{(ordering ? `How to order: ${ordering}  ${ordering_hours}` : "")}</BusinessText>
+            <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {linkedLockdown}</BusinessText>
+            <BusinessText>{(ordering ? `How to order: ${linkedOrdering}  ${linkedOrderingHours}` : "")}</BusinessText>
             <BusinessLink href={`${website}`}
                           style={{ display: website ? "block" : "none" }}>{`${website}`.split("//")[1]}</BusinessLink>
             <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram:
