@@ -93,12 +93,13 @@ const BusinessLink = styled.a`
 
 const amendLinks = (text) => {
     const regexWeb = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-    const regexEmail = /(.+@.+\..+)/g;
+    const regexEmail = /([^@\s]+@[^@\s]+\.[^@\s]+)/gm;
     const webReplace = reactStringReplace(text, regexWeb, (match, i) => {
         const pattern = /^((http|https):\/\/)/;
 
         if(!pattern.test(match)) {
-            match = "https://" + match;
+            const linkMatch = "https://" + match;
+            return  <a href={linkMatch}>{match}</a>
         }
        return  <a href={match}>{match}</a>
     })
@@ -125,7 +126,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
     const linkedLockdown = amendLinks(lockdown);
     const linkedOrdering = amendLinks(ordering);
     const linkedOrderingHours = amendLinks(ordering_hours);
-    
+
     return (
         <BusinessBox>
             <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
@@ -147,7 +148,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
             </AddressText>
             <BusinessText>{linkedDescription}</BusinessText>
             <BusinessText style={{ display: lockdown ? "block" : "none" }}>Lockdown services: {linkedLockdown}</BusinessText>
-            <BusinessText>{(ordering ? `How to order: ${linkedOrdering}  ${linkedOrderingHours}` : "")}</BusinessText>
+            <BusinessText style={{ display: ordering ? "block" : "none" }}>{linkedOrdering} {linkedOrderingHours}</BusinessText>
             <BusinessLink href={`${website}`}
                           style={{ display: website ? "block" : "none" }}>{`${website}`.split("//")[1]}</BusinessLink>
             <BusinessLink href={`${instagram}`} style={{ display: instagram ? "block" : "none" }}>Instagram:
