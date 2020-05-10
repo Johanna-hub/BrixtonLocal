@@ -225,7 +225,7 @@ const getTagData = (_type) => {
     const meta = tagMeta[tagKey];
     if ((type || '').includes(tagKey) || (meta && (meta.aliases || []).find(alias => type.includes(alias)))) {
       color = meta.color;
-      emoji = meta.emoji;
+      //emoji = meta.emoji;
       return { color: meta.color, emoji: meta.emoji };
     }/* else if (meta.aliases) {
       for (const alias in meta.aliases) {
@@ -245,7 +245,7 @@ const getTagData = (_type) => {
     color = tagColorStore[type];
   }
 
-  return { color, emoji };
+  return { color };
 }
 
 const TagText = styled(Text)`
@@ -258,12 +258,13 @@ const TagText = styled(Text)`
 
 const Tag = ({ type: _type, ...props }) => {
   const type = (_type || '').trim();
-  const { color: bgColor, emoji } = getTagData(type);
+  const { color: bgColor } = getTagData(type);
 
   return (
     <Box bg={bgColor} height={32} px={16} borderRadius={16} justifyContent="center" {...props}>
       <TagText color={chroma.contrast(bgColor, 'white') <= 4.5 ? 'black' : 'white'} style={{ display: 'flex' }}>
-        {emoji && <Text fontSize={18} mr={1}>{emoji}</Text>}
+        {/* TODO: Decide whether to strip out the emoji system fully, or keep it for the future? */}
+        {/*emoji && <Text fontSize={18} mr={1}>{emoji}</Text>*/}
         {type}
       </TagText>
     </Box>
