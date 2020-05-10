@@ -54,7 +54,7 @@ const CssReset = createGlobalStyle`
   }
 
   /* Custom overrides */
-  a:-webkit-any-link {
+  a { /* Reset link styles */
     text-decoration: none;
   }
 `;
