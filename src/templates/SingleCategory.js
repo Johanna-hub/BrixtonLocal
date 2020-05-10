@@ -43,7 +43,6 @@ const SingleCategory = ({ data }) => {
   const CategoryPage = CategoryItems[0].category;
   CategoryItems.sort((a, b) => a.name.localeCompare(b.name));
 
-  console.log(CategoryPage)
   return (
     <Box>
       <SEO title="Category page" />
