@@ -40,6 +40,8 @@ const SingleTag = ({ data, pageContext }) => {
 
   const TagItems = allBusinessData.map(extractItemData);
   const TagTitle = pageContext.TagTitle.tag;
+  TagItems.sort((a, b) => a.name.localeCompare(b.name));
+
 
   return (
     <Box>

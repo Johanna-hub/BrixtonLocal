@@ -41,6 +41,8 @@ const SingleCategory = ({ data }) => {
 
   const CategoryItems = allBusinessData.map(extractItemData);
   const CategoryPage = CategoryItems[0].category;
+  CategoryItems.sort((a, b) => a.name.localeCompare(b.name));
+
   console.log(CategoryPage)
   return (
     <Box>
