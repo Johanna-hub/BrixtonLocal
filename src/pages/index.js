@@ -41,10 +41,13 @@ const extractItemData = ({
 
 const IndexPage = ({ data }) => {
 
+
   const categories = {};
 
   const allBusinessData = data.allGoogleSheetValue.edges;
   const places = allBusinessData.map(extractItemData);
+  places.sort((a, b) => a.name.localeCompare(b.name));
+
   places.forEach(place => {
     if(place.category) {
       const category = (categories[place.category] ||
