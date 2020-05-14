@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { system } from '@styled-system/core';
-import { compose, space, color, border, layout, position, flexbox } from 'styled-system';
+import { compose, space, color, border, layout, position, flexbox, backgroundImage } from "styled-system"
 import { Platform } from 'react-primitives';
 
-import { Image as _Image } from '../primitives';
+import { div as _div } from '../primitives';
 
 const objectFit = system({
   objectFit: {
@@ -13,15 +13,19 @@ const objectFit = system({
 });
 
 
-const Image = styled(_Image)`
-  ${compose(space, color, border, layout, position, flexbox)}
-  ${Platform.OS === 'web' ? objectFit : ''}
+const Image = styled(_div)`
+     width: 100%; 
+     padding-top: 100%;
+     position: relative;
+     background-size: cover;
 `;
 
-Image.defaultProps = {
-  display: 'flex',
-  objectFit: 'cover',
-  // objectPosition: '50% 50%',
-}
+
+
+// Image.defaultProps = {
+//   display: 'flex',
+//   objectFit: 'cover',
+//   // objectPosition: '50% 50%',
+// }
 
 export default Image;

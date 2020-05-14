@@ -3,14 +3,18 @@ import styled from 'styled-components';
 
 import { isLast } from '../utils';
 
-import { Box, Text, Image } from '../atoms';
+import { Box, Text, Image, imge } from '../atoms';
 import { Row } from '../molecules';
 import _ from "lodash";
 
 import Link from './Link';
 
+
+
+
+
 const PlaceImage = ({ source, ...props }) => (
-  <Image width="100%" source={source} {...props} />
+  <Image style={{ backgroundImage: `url(${source})`, width: "auto"}} {...props}  />
 );
 
 const CategoryName = styled(Text)`
