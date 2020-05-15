@@ -17,10 +17,10 @@ const extractItemData = ({
 
 const normaliseTags = (tags) => {
     if (Array.isArray(tags)) {
-      return tags;
+      return tags.filter(n => n);
     }
     if (typeof tags === 'string') {
-      return tags.split(",");
+      return tags.split(",").filter(n => n);
     }
     return [];
   }
@@ -30,14 +30,14 @@ const Tags = ({data}) => {
   const allTagData = data.allGoogleSheetValue.edges;
   const tags = allTagData.map(extractItemData);
   const flatTagArray = _.flattenDeep(tags).filter(category => category !== "").map(tag => tag.trim()).map(tag => tag.toLowerCase()).sort();
-  const TagMenuArray = flatTagArray.filter((x, i, a) => a.indexOf(x) === i);
+  const tagMenuArray = flatTagArray.filter((x, i, a) => a.indexOf(x) === i);
   
     return (
       <Box>
         <SEO title="Categories page" />
         <NavBar></NavBar>
         <div px={[16, 40]}>
-        <TagMenu width="100%" items={TagMenuArray} />
+        <TagMenu width="100%" items={tagMenuArray} />
         </div>
         {/* {allBusinessData.map(businessData => <PlaceItem businessName={businessData.node.Name}/>)} */}
       </Box>
