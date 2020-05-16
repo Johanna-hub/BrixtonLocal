@@ -18,7 +18,7 @@ const CategoryImage = styled(_Image)`
   ${Platform.OS === 'web' ? objectFit : ''}
 `;
 
-Image.defaultProps = {
+CategoryImage.defaultProps = {
   display: 'flex',
   objectFit: 'cover',
   // objectPosition: '50% 50%',
