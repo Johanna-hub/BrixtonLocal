@@ -13,7 +13,7 @@ const objectFit = system({
 });
 
 
-const categoryImage = styled(_Image)`
+const CategoryImage = styled(_Image)`
   ${compose(space, color, border, layout, position, flexbox)}
   ${Platform.OS === 'web' ? objectFit : ''}
 `;
@@ -24,4 +24,4 @@ Image.defaultProps = {
   // objectPosition: '50% 50%',
 }
 
-export default categoryImage;
+export default CategoryImage;

@@ -1,8 +1,8 @@
 import { extendStyles } from '../utils';
 
-import { categoryImage } from '../atoms';
+import CategoryImage from './CategoryImage';
 
-const FillImage = extendStyles(categoryImage, () => ({
+const FillImage = extendStyles(CategoryImage, () => ({
   position: 'absolute',
   top: 0,
   left: 0,
