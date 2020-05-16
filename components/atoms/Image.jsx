@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { div as _div } from '../primitives';
+import { View as _view } from '../primitives';
 
-const Image = styled(_div)`
+const Image = styled(_view)`
      width: 100%; 
      padding-top: 100%;
      position: relative;
