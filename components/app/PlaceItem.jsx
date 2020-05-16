@@ -3,15 +3,11 @@ import styled from 'styled-components';
 
 import { isLast } from '../utils';
 
-import { Box, Text, Image, imge } from '../atoms';
+import { Box, Text, Image } from '../atoms';
 import { Row } from '../molecules';
 import _ from "lodash";
 
 import Link from './Link';
-
-
-
-
 
 const PlaceImage = ({ source, ...props }) => (
   <Image style={{ backgroundImage: `url(${source})`, width: "auto"}} {...props}  />
@@ -95,18 +91,12 @@ const PlaceItemContainer = ({ children, ...props }) => (
   </Box>
 );
 
-// const ItemBox = styled(Box)`
-// flex-basis: 25%;
-// margin: 16px;
-// `
-
 const parseImageSource = (url) => {
   const isDriveUrl = url.includes('drive.google.com');
 
   if (isDriveUrl) {
     return `http://drive.google.com/uc?export=view&id=${url.split('=')[1]}`
   }
-
 
   return url;
 };

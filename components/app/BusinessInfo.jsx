@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { isLast } from '../utils';
 
-import { Box, Text, Image } from '../atoms';
+import { Box, Text, categoryImage } from '../atoms';
 import { Row } from '../molecules';
 import Link from './Link';
 import _ from "lodash";
@@ -14,7 +14,7 @@ const PlaceImage = ({ source, ...props }) => (
     <BusinessImage width="100%" source={source} {...props} />
 );
 
-const BusinessImage = styled(Image)`
+const BusinessImage = styled(categoryImage)`
   width: 25%;
   @media (max-width: 768px) {
     width: 75%;
