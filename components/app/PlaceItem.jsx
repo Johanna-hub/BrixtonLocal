@@ -13,10 +13,13 @@ import Tag from './Tag';
 
 import Link from './Link';
 
-const PlaceImage = ({ source, ...props }) => (
+/*const PlaceImage = ({ source, ...props }) => (
   <Image style={{ backgroundImage: `url(${source})`, width: "auto"}} {...props}  />
-);
+);*/
 
+const PlaceImage = React.forwardRef(({ source, ...props }, ref) => (
+  <Image ref={ref} style={{ backgroundImage: `url(${source})`, width: "auto"}} {...props}/>
+));
 const CategoryName = styled(Text)`
   font-family: SF Pro Text;
   font-style: normal;
@@ -108,6 +111,7 @@ const PlaceItem = ({ children, place: { name, category, source: _source, tags, c
             style={{ pointerEvents: 'none' }}
             justifyContent="center"
             alignItems="center"
+            zIndex={100}
           >
             <Text color="white" fontSize={16} fontFamily="Montserrat" fontWeight="bold">SEE MORE INFO ></Text>
           </Box>
