@@ -23,11 +23,16 @@ const TagContainer = styled.div`
 `
 const TagMenu = ({ items: tags, ...props }) => (
   <TagContainer {...props}>
-    {tags && tags.map((tag, i) => (
-      <Link key={i} to={`/tag/${_.kebabCase(tag)}`}>
-        <Tag mx={2} mb={(!isLast(i, tags.length)) ? 3 : 0} type={tag} />
-      </Link>
-    ))}
+    {tags && tags.map((tag, i) => {
+      if(tag) {
+        return(
+        <Link key={i} to={`/tag/${_.kebabCase(tag)}`}>
+          <Tag mx={2} mb={(!isLast(i, tags.length)) ? 3 : 0} type={tag}/>
+        </Link>
+        )
+      }
+      }
+    )}
   </TagContainer>
 );
 
