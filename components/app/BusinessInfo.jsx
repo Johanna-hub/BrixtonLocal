@@ -152,8 +152,7 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
             {tags && (
                 <Row flexWrap="wrap" style={{ "margin-top": "16px" }}>
                     {(tags || []).map((tag, i) => {
-                      tag = tag.trim();
-                      if(tag) {
+                      if(tag.trim()) {
                         return(
                         <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top": "8px" }}>
                           <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0}/>
