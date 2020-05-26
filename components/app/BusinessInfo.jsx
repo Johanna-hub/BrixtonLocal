@@ -9,6 +9,7 @@ import { Row } from '../molecules';
 import Link from './Link';
 import _ from "lodash";
 import reactStringReplace from "react-string-replace";
+import { Tag } from '#components/app';
 
 
 const PlaceImage = ({ source, ...props }) => (
@@ -111,16 +112,6 @@ const amendLinks = (text) => {
     return replacedText;
 }
 
-
-
-const Tag = ({ type, ...props }) => (
-    <Box bg="rgba(103, 128, 159, 1)" py={1} px={16} borderRadius={4} {...props}>
-        <TagText color="#fff">
-            {type}
-        </TagText>
-    </Box>
-)
-
 const PlaceInfo = ({ name, category, tags, collection, delivery, description, address, lockdown, ordering, ordering_hours, website, facebook, instagram, twitter }) => {
 
     const linkedDescription = amendLinks(description);
@@ -160,11 +151,15 @@ const PlaceInfo = ({ name, category, tags, collection, delivery, description, ad
                 @{`${facebook}`.split(".com/")[1]}</BusinessLink>
             {tags && (
                 <Row flexWrap="wrap" style={{ "margin-top": "16px" }}>
-                    {(tags || []).map((tag, i) => (
+                    {(tags || []).map((tag, i) => {
+                      if(tag) {
+                        return(
                         <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top": "8px" }}>
-                            <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0}/>
+                          <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0}/>
                         </Link>
-                    ))}
+                        )
+                      }
+                    })}
                 </Row>
             )}
         </BusinessBox>
