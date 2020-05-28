@@ -51,7 +51,6 @@ const PlaceName = styled(Text)`
 
 
 const PlaceInfo = ({ name, category, tags, collection, delivery }) => {
-  console.log(tags, "tags");
   const finTags = tags.map(tag => {
     const newTag =  tag.replace(
       /\w\S*/g,
