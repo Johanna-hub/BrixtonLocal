@@ -24,10 +24,21 @@ const TagContainer = styled.div`
 const TagMenu = ({ items: tags, ...props }) => (
   <TagContainer {...props}>
     {tags && tags.map((tag, i) => {
+
+        const newTag =  tag.replace(
+          /\w\S*/g,
+          txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+        );
+
+      const finTag =  newTag.replace(
+        /\+\S*/g,
+        txt => "+" + txt.charAt(1).toUpperCase() + txt.substr(2).toLowerCase(),
+      );
+
       if(tag) {
         return(
         <Link key={i} to={`/tag/${_.kebabCase(tag)}`}>
-          <Tag mx={2} mb={(!isLast(i, tags.length)) ? 3 : 0} type={tag}/>
+          <Tag mx={2} mb={(!isLast(i, tags.length)) ? 3 : 0} type={finTag}/>
         </Link>
         )
       }
