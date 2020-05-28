@@ -49,10 +49,26 @@ const PlaceName = styled(Text)`
 `;
 
 
-const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
+
+const PlaceInfo = ({ name, category, tags, collection, delivery }) => {
+  const finTags = tags.map(tag => {
+    const newTag =  tag.replace(
+      /\w\S*/g,
+      txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+    );
+
+    return newTag.replace(
+      /\+\S*/g,
+      txt => "+" + txt.charAt(1).toUpperCase() + txt.substr(2).toLowerCase(),
+    );
+
+  });
+
+
+  return (
   <Box width="100%">
     <Row width="100%" justifyContent="space-between" mt={2} mb={1}>
-      <Link to={`/category/${_.kebabCase(category)}`} style={{ textDecoration: 'none', "margin-bottom":"8px" }}>
+      <Link to={`/category/${_.kebabCase(category)}`} style={{ textDecoration: 'none', "margin-bottom": "8px" }}>
         <CategoryName>
           {(category || '').toUpperCase()}
         </CategoryName>
@@ -63,19 +79,24 @@ const PlaceInfo = ({ name, category, tags, collection, delivery }) => (
       </CollectionMethod>
     </Row>
     <PlaceName mb={2}>
-    <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none', "color":"black" }}>{name}</Link>
+      <Link to={`/business/${_.kebabCase(name)}`} style={{ textDecoration: 'none', "color": "black" }}>{name}</Link>
     </PlaceName>
     {tags && (
       <Row flexWrap="wrap">
-        {(tags || []).filter(i => i).map((tag, i) => (
-          <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top":"8px" }}>
-            <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0} />
-          </Link>
-        ))}
+        {(finTags || []).filter(i => i).map((tag, i) => {
+          if (tag.trim()) {
+            return (
+              <Link to={`/tag/${_.kebabCase(tag)}`} style={{ textDecoration: 'none', "margin-top": "8px" }}>
+                <Tag key={i} type={tag} mr={!isLast(i, tags.length) ? 2 : 0}/>
+              </Link>
+            )
+          }
+        })}
       </Row>
     )}
   </Box>
-);
+  )
+};
 
 const PlaceItemContainer = ({ children, ...props }) => (
   <Box width={['100%', 'calc(50% - 16px)', 'calc(33.33333% - 16px)']} mx={[null, 8]} {...props}>
