@@ -34,6 +34,21 @@ const SingleBusiness = ({ data }) => {
     return [];
   }
 
+const capitaliseTags = (tags) => {
+    return tags.map(tag => {
+      const newTag = tag.replace(
+        /\w\S*/g,
+        txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+      );
+
+      return newTag.replace(
+        /\+\S*/g,
+        txt => "+" + txt.charAt(1).toUpperCase() + txt.substr(2).toLowerCase(),
+      );
+
+    });
+  };
+
   const socialMediaUrl = (link, network) => {
     if (link.includes(`${network}`)){
       return link
@@ -66,7 +81,7 @@ const SingleBusiness = ({ data }) => {
     source: Image_Url,
     instagram: socialMediaUrl(Instagram, "instagram"),
     twitter: socialMediaUrl(Twitter, "twitter"),
-    tags: normaliseTags(Tags),
+    tags: capitaliseTags(normaliseTags(Tags)),
     ordering_hours: Ordering_timescales_opening_hours,
     website: websiteUrl(Website)
   }
