@@ -55,7 +55,7 @@ const Header = () => {
     <Box minHeight={[390, 390, 200]}>
       <HeaderContainer>
        <HeaderTitle as="h1" fontSize={[48, 48, 64]}>Brixton<br />Local.Life</HeaderTitle>
-       <HeaderText>Still getting the word out for the local community and businesses during the second COVID-19 lockdown</HeaderText>
+       <HeaderText>Getting the word out (again!) for the local community and businesses during the second COVID-19 lockdown</HeaderText>
        </HeaderContainer>
       </Box>
   )
