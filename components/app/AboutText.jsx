@@ -31,7 +31,7 @@ const About = () => {
       <Box>
         <AboutContainer>
         <AboutText>We started this website during the first Covid-19 Lockdown to connect people with businesses and services still operating in Brixton, and to help businesses move online quickly.</AboutText>
-        <AboutText>It is a big process to update it for the second Lockdown - so if your business is listed, please do <AboutLink href = "mailto: brixtonlocal@gmail.com">email</AboutLink> us with a few sentences that we can post for you.</AboutText>
+        <AboutText>It is a big process to update it for the second Lockdown - so if your business is listed, please do <AboutLink href = "mailto: brixtonlocal@gmail.com">email</AboutLink> us with a paragraph outlining your services and hours of operation that we can post for you.</AboutText>
         <AboutText>Follow us on Instagram at <AboutLink href="https://www.instagram.com/brixtonlocal.life/">@brixtonlocal.life</AboutLink> for daily updates on the businesses featured here.</AboutText>
           <AboutText>Brixton Local.Life kickstarted the <AboutLink href="https://www.lovelocal.life/">LoveLocal.Life</AboutLink> project.</AboutText>  
           <AboutText>We thought if we could support local people and businesses in this small way, we might just come out of this stronger and more aware of what’s on offer in our amazing local area, and how they continued to serve us, even under the most difficult circumstances.</AboutText>
